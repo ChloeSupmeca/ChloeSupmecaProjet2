@@ -1,6 +1,6 @@
-Caries
-Aphtes
-Parodontite
-Gingivite
-Abces
-Malocclusion
+Caries PLIERS
+Aphtes SPACER PLIERS
+Parodontite PLIERS 
+Gingivite SPACER 
+Abces pliers SPACER 
+Malocclusion SPACER PLIERS

@@ -2,7 +2,7 @@ Patient1 Caries PLIERS
 Patient2 Abces PLIERS SPACER 
 Patient3 Aphtes SPACER PLIERS
 Patient4 Parodontite PLIERS 
-Patient5
+Patient5 Gingivite SPACER 
 Patient6 Aphtes SPACER PLIERS
 Patient7
 Patient8
@@ -13,7 +13,7 @@ Patient12 Parodontite PLIERS
 Patient13
 Patient14 Caries PLIERS
 Patient15
-Patient16
+Patient16 Gingivite SPACER 
 Patient17
 Patient18 Aphtes SPACER PLIERS
 Patient19
@@ -23,8 +23,8 @@ Patient22
 Patient23 Abces pliers SPACER 
 Patient24
 Patient25 Parodontite PLIERS 
-Patient26
+Patient26 Gingivite SPACER 
 Patient27 Aphtes SPACER PLIERS
-Patient28
+Patient28 Gingivite SPACER 
 Patient29 Parodontite PLIERS 
 Patient30 Caries PLIERS

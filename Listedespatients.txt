@@ -1,6 +1,6 @@
-Patient1 
-Patient2
-Patient3
+Patient1 Caries PLIERS
+Patient2 Abces PLIERS SPACER 
+Patient3 
 Patient4
 Patient5
 Patient6
@@ -20,7 +20,7 @@ Patient19
 Patient20
 Patient21
 Patient22
-Patient23
+Patient23 Abces pliers SPACER 
 Patient24
 Patient25
 Patient26

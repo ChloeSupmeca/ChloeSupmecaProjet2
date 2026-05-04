@@ -68,13 +68,3 @@ p->temps = 0;
 p->patients_satisfaits;
 p->patients_mecontents;
 }
-
-int main(){
-    
-    Partie p;
-
-    Plateau(&p);
-    affichage(&p);
-
-    return 0;
-}

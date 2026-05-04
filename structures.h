@@ -1,19 +1,22 @@
+#define LONGEUR 12
+#define HAUTEUR 11
+#define N_FAUTEUILS 4
 
 typedef enum{
-    NONE,
-    PLIERS,
-    SPACER 
-}Tool;
+    AUCUN,
+    PINCE,
+    ECARTEUR 
+}Instrument;
 
 typedef struct{
-    Tool i;
-    int dirt;
-}ToolCondition;
+    Instrument i;
+    int salete;
+}Etat_Instrument;
 
 typedef struct {
-    int gloves;
-    int glovesDirt;
-} Gloves;
+    int gant;
+    int salete_gants;
+} Gants; 
 
 typedef struct{
     int x;
@@ -22,21 +25,34 @@ typedef struct{
 
 typedef struct{
     Position p;
-    Gloves g;
-    ToolCondition hand;
-}Dentist;
+    Gants g;
+    Etat_Instrument hand;
+}Dentiste;
 
 typedef struct {
-    int chair;
+    int occupe_fauteuil;
     int patience;
-    /*Pathology ToolCondition[2]; (pathologies a rajouter dans un fichier à part)*/
+    /*Pathologie Etat_Instrument[2]; (pathologies a rajouter dans un fichier à part)*/
     int treated;
+    Position p;
 } Patient;
 
 typedef enum {
-    FLOOR,
-    CHAIR,
+    SOL,
+    FAUTEUIL,
     INSTRUMENTS,
-    TRASH,
-    EMPTY
-} Box;
+    POUBELLE,
+    VIDE
+} Case;
+
+typedef struct {
+    Case grille[LONGEUR][HAUTEUR];
+    Patient patients[N_FAUTEUILS];
+    Dentiste dentiste;
+    int argent;
+    float temps;
+    int patients_satisfaits;
+    int patients_mecontents;
+
+
+} Partie;

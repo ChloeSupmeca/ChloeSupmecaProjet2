@@ -1,4 +1,4 @@
-#define LONGEUR 12
+#define LONGUEUR 12
 #define HAUTEUR 11
 #define N_FAUTEUILS 4
 

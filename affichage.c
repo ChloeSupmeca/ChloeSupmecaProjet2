@@ -29,7 +29,7 @@ void affichage(Partie* p){
             }
         }
     printf("\n ---------------------------------------------\n");
-
+    }
     printf("ARGENT : %d\n", p->argent);
     printf("TEMPS  : %d\n", p->temps);
 
@@ -41,7 +41,6 @@ void affichage(Partie* p){
             printf("Patient %d -> patience : %d\n",i +1,p->patients[i].patience);
         }
     }
-}
 }
 
 void Plateau(Partie *p) {
@@ -65,6 +64,6 @@ void Plateau(Partie *p) {
 
 p->argent = 0;
 p->temps = 0;
-p->patients_satisfaits;
-p->patients_mecontents;
+p->patients_satisfaits; //expression vide ?
+p->patients_mecontents; //expression vide ?
 }

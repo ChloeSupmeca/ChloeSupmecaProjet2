@@ -2,7 +2,7 @@
 
 Dentiste soigner_Patient(Dentist personnage){
     Dentiste soin;
-    scanf("%c", soin);
+    scanf("%c", &soin);
     if(soin=='K' || soin=='k'){
        printf("Patient(e) guéri(e) !\n");
     }

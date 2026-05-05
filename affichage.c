@@ -25,7 +25,7 @@ void affichage(Partie* p){
                 printf("P");
             }
             else {
-                printf("%c", symbole(p->grille[x][y]));
+                printf("%c", symboleCase(p->grille[x][y]));
             }
         }
     printf("\n ---------------------------------------------\n");
@@ -48,7 +48,7 @@ void Plateau(Partie *p) {
     int x, y;
 
     for (x = 0; x < LONGUEUR; x++) {
-        for (y = 0; x < HAUTEUR; y++) {
+        for (y = 0; y < HAUTEUR; y++) {
             p->grille[y][x] = SOL;
         }
     }

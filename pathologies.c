@@ -3,10 +3,10 @@
 //Tableau des pathologies
 
 Pathologie pathologies[] = {
-    {1, {PINCE, AUCUN}},              // Caries
-    {2, {ECARTEUR, PINCE}},          // Aphtes
+    {1, {DETARTREUSE, AUCUN}},              // Caries
+    {2, {MIROIR, PINCE}},          // Aphtes
     {1, {PINCE, AUCUN}},              // Parodontite
-    {1, {ECARTEUR, AUCUN}},          // Gingivite
-    {2, {PINCE, ECARTEUR}},          // Abcès
-    {2, {ECARTEUR, PINCE}}           // Malocclusion
+    {1, {ECARTEUR, DETARTREUSE}},          // Gingivite
+    {2, {SONDE, SERINGUE}},          // Abcès
+    {2, {ECARTEUR, FRAISE}}           // Malocclusion
 };

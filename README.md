@@ -23,7 +23,7 @@ S'approcher de la poubelle et appuyer sur W
 
 Pour soigner :
 
-Appuyer sur K
+S'approcher du patient et appuyer sur K
 
 Pour prendre un instrument :
 

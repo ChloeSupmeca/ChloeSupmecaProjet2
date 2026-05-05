@@ -5,7 +5,7 @@
 typedef enum{
     AUCUN,
     PINCE,
-    ECARTEUR 
+    ECARTEURS 
 }Instrument;
 
 typedef struct{
@@ -56,3 +56,8 @@ typedef struct {
 
 
 } Partie;
+
+typedef struct {
+    int nb_instruments;
+    Instrument instruments[2]; 
+} Pathologie; 

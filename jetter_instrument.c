@@ -1,6 +1,6 @@
 #include "structures.h"
 
-void jetter_Instrument(Dentiste personnage){
+Dentiste jetter_Instrument(Dentiste personnage){
     Dentiste objet;
     
     scanf("%c", &objet.hand);
@@ -12,5 +12,5 @@ void jetter_Instrument(Dentiste personnage){
         printf("Erreur !\n");
         exit(40);
     }
-
+    return objet;
 }

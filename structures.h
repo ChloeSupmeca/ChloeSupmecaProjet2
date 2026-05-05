@@ -48,7 +48,7 @@ typedef struct {
 typedef struct {
     int occupe_fauteuil;
     int patience;
-    /*Pathologie Etat_Instrument[2]; (pathologies a rajouter dans un fichier à part)*/
+    Pathologie Etat_Instrument[2];
     int treated;
     Position p;
     Pathologie patho;

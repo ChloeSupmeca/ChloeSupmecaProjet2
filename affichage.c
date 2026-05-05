@@ -18,7 +18,7 @@ void affichage(Partie* p){
     int x, y;
     for (x = 0; x < LONGUEUR; x++) {
         for (y = 0; y < HAUTEUR; y++) {
-            if (p->dentist.p.x == x && p->dentist.p.y == y) {
+            if (p->dentiste.p.x == x && p->dentiste.p.y == y) {
                 printf("D");
             }
             else if (presence_patient(p, x, y)) {

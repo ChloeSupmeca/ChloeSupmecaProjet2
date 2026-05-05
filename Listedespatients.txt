@@ -1,30 +1,30 @@
 Patient1 Caries PINCES
-Patient2 Abces PINCES ECARTEUR 
-Patient3 Aphtes ECARTEUR PINCES
+Patient2 Abces PINCES ECARTEURS 
+Patient3 Aphtes ECARTEURS PINCES
 Patient4 Parodontite PINCES 
-Patient5 Gingivite ECARTEUR 
-Patient6 Aphtes ECARTEUR PINCES
-Patient7 Malocclusion ECARTEUR PINCES
-Patient8 Abces PINCES ECARTEUR 
-Patient9 Malocclusion ECARTEUR PINCES
-Patient10 Aphtes ECARTEUR PINCES
+Patient5 Gingivite ECARTEURS 
+Patient6 Aphtes ECARTEURS PINCES
+Patient7 Malocclusion ECARTEURS PINCES
+Patient8 Abces PINCES ECARTEURS 
+Patient9 Malocclusion ECARTEURS PINCES
+Patient10 Aphtes ECARTEURS PINCES
 Patient11 Caries PINCES
 Patient12 Parodontite PINCES 
-Patient13 Abces PINCES ECARTEUR 
+Patient13 Abces PINCES ECARTEURS 
 Patient14 Caries PINCES
-Patient15 Malocclusion ECARTEUR PINCES
-Patient16 Gingivite ECARTEUR 
+Patient15 Malocclusion ECARTEURS PINCES
+Patient16 Gingivite ECARTEURS 
 Patient17 Caries PINCES
-Patient18 Aphtes ECARTEUR PINCES
-Patient19 Malocclusion ECARTEUR PINCES
-Patient20 Abces PINCES ECARTEUR 
+Patient18 Aphtes ECARTEURS PINCES
+Patient19 Malocclusion ECARTEURS PINCES
+Patient20 Abces PINCES ECARTEURS 
 Patient21 Caries PINCES
 Patient22 Caries PINCES
-Patient23 Abces PINCES ECARTEUR 
-Patient24 Malocclusion ECARTEUR PINCES
+Patient23 Abces PINCES ECARTEURS 
+Patient24 Malocclusion ECARTEURS PINCES
 Patient25 Parodontite PINCES 
-Patient26 Gingivite ECARTEUR 
-Patient27 Aphtes ECARTEUR PINCES
-Patient28 Gingivite ECARTEUR 
+Patient26 Gingivite ECARTEURS 
+Patient27 Aphtes ECARTEURS PINCES
+Patient28 Gingivite ECARTEURS 
 Patient29 Parodontite PINCES 
 Patient30 Caries PINCES

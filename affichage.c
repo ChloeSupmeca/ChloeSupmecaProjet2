@@ -64,6 +64,6 @@ void Plateau(Partie *p) {
 
 p->argent = 0;
 p->temps = 0;
-//expression vide ? p->patients_satisfaits; 
-//expression vide ? p->patients_mecontents; 
+p->patients_satisfaits=0; 
+p->patients_mecontents=0; 
 }

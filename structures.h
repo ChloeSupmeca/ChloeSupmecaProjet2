@@ -3,14 +3,19 @@
 #include <stdio.h>
 #include <string.h>
 
-#define LONGUEUR 12
-#define HAUTEUR 11
+#define LONGUEUR 8
+#define HAUTEUR 9
 #define N_FAUTEUILS 4
 
 typedef enum{
     AUCUN,
     PINCE,
-    ECARTEURS 
+    ECARTEURS,
+    SERINGUE,
+    MIROIR,
+    SONDE,
+    FRAISE,
+    DETARTREUSE
 }Instrument;
 
 typedef struct{

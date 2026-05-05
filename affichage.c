@@ -48,7 +48,7 @@ void Plateau(Partie *p) {
 
     for (x = 0; x < LONGUEUR; x++) {
         for (y = 0; y < HAUTEUR; y++) {
-            p->grille[y][x] = SOL;
+            p->grille[x][y] = SOL;
         }
     }
 

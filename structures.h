@@ -35,6 +35,7 @@ typedef struct {
     /*Pathologie Etat_Instrument[2]; (pathologies a rajouter dans un fichier à part)*/
     int treated;
     Position p;
+    Pathologie patho;
 } Patient;
 
 typedef enum {

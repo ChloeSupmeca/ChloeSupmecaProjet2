@@ -3,7 +3,7 @@
 void Gants_Dentiste(Dentiste gants){ // ici le dentiste prend des gants
     Gants objet;
     if(gants.g.gloves==0){
-        if(objet=='P' || objet=='p'){
+        if(objet=='G' || objet=='g'){
             printf("Voulez vous prendre des gants ? \n");
            scanf("%d", &gants.g.gloves);
            if(gants.g.gloves==0){

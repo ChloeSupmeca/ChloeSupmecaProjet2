@@ -1,5 +1,4 @@
 #include "structures.h"
-#include <stdlib.h>
 
 //Tableau des pathologies
 

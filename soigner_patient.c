@@ -3,7 +3,7 @@
 void soigner_Patient(Dentist personnage){
     Dentiste soin;
     
-    if(soin=='K'){
+    if(soin=='K' || soin=='k'){
        printf("Patient(e) guéri(e) !\n");
     }
     

@@ -1,6 +1,6 @@
-Caries PLIERS
-Aphtes SPACER PLIERS
-Parodontite PLIERS 
-Gingivite SPACER 
-Abces pliers SPACER 
-Malocclusion SPACER PLIERS
+Caries PINCE
+Aphtes ECARTEURS PINCE
+Parodontite PINCE 
+Gingivite ECARTEURS 
+Abces PINCE ECARTEURS 
+Malocclusion ECARTEURS PINCE

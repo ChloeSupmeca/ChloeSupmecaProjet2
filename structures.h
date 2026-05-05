@@ -1,3 +1,8 @@
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
+#include <string.h>
+
 #define LONGUEUR 12
 #define HAUTEUR 11
 #define N_FAUTEUILS 4

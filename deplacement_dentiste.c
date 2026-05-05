@@ -1,6 +1,6 @@
 #include "structures.h"
 
-void deplacement_Dentiste(Dentist personnage){
+void deplacement_Dentiste(Dentiste personnage){
     int deplacement;
     
     scanf("%c" &deplacement);

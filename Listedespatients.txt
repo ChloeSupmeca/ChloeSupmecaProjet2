@@ -1,26 +1,26 @@
 Patient1 Caries DETARTREUSE
-Patient2 Abces PINCES ECARTEURS 
+Patient2 Abces SONDE SERINGUE 
 Patient3 Aphtes MIROIR
 Patient4 Parodontite PINCES 
 Patient5 Gingivite ECARTEURS DETARTREUSE 
 Patient6 Aphtes MIROIR
 Patient7 Malocclusion ECARTEURS PINCES
-Patient8 Abces PINCES ECARTEURS 
+Patient8 Abces SONDE SERINGUE  
 Patient9 Malocclusion ECARTEURS PINCES
 Patient10 Aphtes MIROIR
 Patient11 Caries DETARTREUSE
 Patient12 Parodontite PINCES 
-Patient13 Abces PINCES ECARTEURS 
+Patient13 Abces SONDE SERINGUE  
 Patient14 Caries DETARTREUSE
 Patient15 Malocclusion ECARTEURS PINCES
 Patient16 Gingivite ECARTEURS DETARTREUSE 
 Patient17 Caries DETARTREUSE
 Patient18 Aphtes MIROIR
 Patient19 Malocclusion ECARTEURS PINCES
-Patient20 Abces PINCES ECARTEURS 
+Patient20 Abces SONDE SERINGUE  
 Patient21 Caries DETARTREUSE
 Patient22 Caries DETARTREUSE
-Patient23 Abces PINCES ECARTEURS 
+Patient23 Abces SONDE SERINGUE  
 Patient24 Malocclusion ECARTEURS PINCES
 Patient25 Parodontite PINCES 
 Patient26 Gingivite ECARTEURS DETARTREUSE 

@@ -35,6 +35,12 @@ typedef struct{
 }Dentiste;
 
 typedef struct {
+    int nb_instruments;
+    Instrument instruments[2]; 
+} Pathologie; 
+
+
+typedef struct {
     int occupe_fauteuil;
     int patience;
     /*Pathologie Etat_Instrument[2]; (pathologies a rajouter dans un fichier à part)*/
@@ -52,7 +58,7 @@ typedef enum {
 } Case;
 
 typedef struct {
-    Case grille[LONGEUR][HAUTEUR];
+    Case grille[LONGUEUR][HAUTEUR];
     Patient patients[N_FAUTEUILS];
     Dentiste dentiste;
     int argent;
@@ -62,8 +68,3 @@ typedef struct {
 
 
 } Partie;
-
-typedef struct {
-    int nb_instruments;
-    Instrument instruments[2]; 
-} Pathologie; 

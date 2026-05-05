@@ -58,8 +58,7 @@ typedef enum {
     SOL,
     FAUTEUIL,
     INSTRUMENTS,
-    POUBELLE,
-    VIDE
+    POUBELLE
 } Case;
 
 typedef struct {

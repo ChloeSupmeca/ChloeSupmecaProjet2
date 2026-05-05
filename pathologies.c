@@ -1,6 +1,5 @@
 #include "structures.h"
 #include <stdlib.h>
-#include <time.h>
 
 //Tableau des pathologies
 

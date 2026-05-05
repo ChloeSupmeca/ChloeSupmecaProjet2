@@ -1,6 +1,6 @@
 #include <structures.h>
 char symboleCase (Case b){
-    char symboles[] = {' ', 'F', 'I', 'P'};
+    char symboles[] = {' ', 'F', 'I', 'P', 'M'};
     return symboles[b];
 
 }

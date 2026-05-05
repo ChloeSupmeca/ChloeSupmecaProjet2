@@ -62,7 +62,7 @@ void Plateau(Partie *p) {
     p->grille[7][10] = POUBELLE;
     //mettre les murs et les vides
 
-p->argent = 0;
+p->argent = 50;
 p->temps = 0;
 p->patients_satisfaits=0; 
 p->patients_mecontents=0; 

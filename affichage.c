@@ -42,6 +42,8 @@ void affichage(Partie* p){
 
     printf("Patients satisfaits   : %d\n", p->patients_satisfaits);
     printf("patients mécontents : %d\n", p->patients_mecontents);
+	 printf("patients furieux : %d\n", p->patients_furieux);
+
 
     for (int i = 0; i < N_FAUTEUILS; i++) {
         if (p->patients[i].occupe_fauteuil) {

@@ -1,4 +1,4 @@
-Patient1 Caries PINCES
+Patient1 Caries DETARTREUSE
 Patient2 Abces PINCES ECARTEURS 
 Patient3 Aphtes ECARTEURS PINCES
 Patient4 Parodontite PINCES 
@@ -8,18 +8,18 @@ Patient7 Malocclusion ECARTEURS PINCES
 Patient8 Abces PINCES ECARTEURS 
 Patient9 Malocclusion ECARTEURS PINCES
 Patient10 Aphtes ECARTEURS PINCES
-Patient11 Caries PINCES
+Patient11 Caries DETARTREUSE
 Patient12 Parodontite PINCES 
 Patient13 Abces PINCES ECARTEURS 
-Patient14 Caries PINCES
+Patient14 Caries DETARTREUSE
 Patient15 Malocclusion ECARTEURS PINCES
 Patient16 Gingivite ECARTEURS 
-Patient17 Caries PINCES
+Patient17 Caries DETARTREUSE
 Patient18 Aphtes ECARTEURS PINCES
 Patient19 Malocclusion ECARTEURS PINCES
 Patient20 Abces PINCES ECARTEURS 
-Patient21 Caries PINCES
-Patient22 Caries PINCES
+Patient21 Caries DETARTREUSE
+Patient22 Caries DETARTREUSE
 Patient23 Abces PINCES ECARTEURS 
 Patient24 Malocclusion ECARTEURS PINCES
 Patient25 Parodontite PINCES 
@@ -27,4 +27,4 @@ Patient26 Gingivite ECARTEURS
 Patient27 Aphtes ECARTEURS PINCES
 Patient28 Gingivite ECARTEURS 
 Patient29 Parodontite PINCES 
-Patient30 Caries PINCES
+Patient30 Caries DETARTREUSE

@@ -70,6 +70,7 @@ typedef struct {
     float temps;
     int patients_satisfaits;
     int patients_mecontents;
+    int patients_furieux;
 
 
 } Partie;

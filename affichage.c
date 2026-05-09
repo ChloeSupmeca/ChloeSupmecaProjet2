@@ -90,6 +90,10 @@ void Plateau(Partie *p) {
     p->grille[7][0]= MUR;
     p->grille[7][1]= MUR;
     p->grille[7][2]= MUR;
+	p->grille[4][0]= INSTRUMENTS; 
+    p->grille[2][0]= INSTRUMENTS;
+    p->grille[7][3]= MUR;
+    p->grille[3][0]= INSTRUMENTS;
     
 
 p->argent = 0;

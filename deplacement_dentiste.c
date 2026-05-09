@@ -1,8 +1,17 @@
 #include "structures.h"
 
 void deplacement_Dentiste(Partie *p, int dx, int dy){
-    int deplacement;
+   
+    int newX = p->dentiste.p.x  + dx;
+    int newY = p->dentiste.p.y + dy;
+
+    if(newX >=0 && newY <LONGUEUR && newY>=0 && p->grille[newX][newY]== SOL){
+        p->dentiste.p.x=newX;
+        p->dentiste.p.y=newY;
+    }
+}
     
+    /*int deplacement;
     scanf("%c" &deplacement);
     if(deplacement=='Q'|| deplacement=='q'){
         personnage.p.x=-1;
@@ -22,3 +31,4 @@ void deplacement_Dentiste(Partie *p, int dx, int dy){
     }
 
 }
+*/

@@ -4,7 +4,13 @@ void deplacement_Dentiste(Partie *p, int dx, int dy){
    
     int newX = p->dentiste.p.x  + dx;
     int newY = p->dentiste.p.y + dy;
-
+switch (direction) {
+        case '5': newY--; break;  // haut
+        case '2': newY++; break;  // bas
+        case '1': newX--; break;  // gauche
+        case '3': newX++; break;  // droite
+        default: return;
+    }
     if(newX >=0 && newY <LONGUEUR && newY>=0 && p->grille[newX][newY]== SOL){
         p->dentiste.p.x=newX;
         p->dentiste.p.y=newY;

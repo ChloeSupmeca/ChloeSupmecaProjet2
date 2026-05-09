@@ -100,6 +100,8 @@ p->argent = 0;
 p->temps = 0;
 p->patients_satisfaits=0; 
 p->patients_mecontents=0; 
+	p->dentiste.p.x=3;
+	p->dentiste.p.y=3
 }
 
 

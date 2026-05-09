@@ -49,7 +49,7 @@ typedef struct {
     int occupe_fauteuil;
     int patience;
     Pathologie Etat_Instrument[2];
-    int treated;
+    int traite;
     Position p;
     Pathologie patho;
 } Patient;

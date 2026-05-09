@@ -58,7 +58,8 @@ typedef enum {
     SOL,
     FAUTEUIL,
     INSTRUMENTS,
-    POUBELLE,
+    RECYCLAGE,
+    BIOLOGIQUE,
     GANTS,
     MUR
 } Case;

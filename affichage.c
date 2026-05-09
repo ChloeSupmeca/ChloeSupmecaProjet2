@@ -103,6 +103,10 @@ p->patients_mecontents=0;
 	p->dentiste.p.x=3;
 	p->dentiste.p.y=3;
 	p->dentiste.mains.i=AUCUN;
+
+	for(int i=0; i<N_FAUTEUILS; i++){
+		p->patients[i].occupe_fauteuil=0;
+	}
 }
 
 

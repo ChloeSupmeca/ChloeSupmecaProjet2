@@ -36,7 +36,7 @@ typedef struct{
 typedef struct{
     Position p;
     Gants g;
-    Etat_Instrument hand;
+    Etat_Instrument mains;
 }Dentiste;
 
 typedef struct {

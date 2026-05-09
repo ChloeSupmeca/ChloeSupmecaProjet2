@@ -59,6 +59,7 @@ typedef enum {
     FAUTEUIL,
     INSTRUMENTS,
     POUBELLE,
+    GANTS,
     MUR
 } Case;
 

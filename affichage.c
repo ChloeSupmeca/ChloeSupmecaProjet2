@@ -1,6 +1,6 @@
 #include "structures.h"
 char symboleCase (Case b){
-    char symboles[] = {' ', 'F', 'I', 'C','G','M'};
+    char symboles[] = {' ', 'F', 'I', 'R','B','G','M'};
     return symboles[b];
 
 }
@@ -72,8 +72,8 @@ void Plateau(Partie *p) {
     p->grille[0][4]= INSTRUMENTS;
     p->grille[0][5]= INSTRUMENTS;
     p->grille[0][6]= INSTRUMENTS;
-    p->grille[3][8] = POUBELLE;
-    p->grille[4][8] = POUBELLE;
+    p->grille[3][8] = RECYCLAGE;
+    p->grille[4][8] = BIOLOGIQUE;
     p->grille[0][0]= MUR;
     p->grille[1][0]= MUR;
     p->grille[5][0]= GANTS;

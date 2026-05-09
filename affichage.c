@@ -1,4 +1,4 @@
-#include "struct.h"
+#include "structures.h"
 char symboleCase (Case b){
     char symboles[] = {' ', 'F', 'I', 'C','M'};
     return symboles[b];

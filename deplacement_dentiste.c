@@ -10,7 +10,8 @@ void deplacement_Dentiste(Partie *p, int dx, int dy){
         p->dentiste.p.y=newY;
     }
 }
-    
+    //FONCTION POUR INTERAGIR :
+
     /*int deplacement;
     scanf("%c" &deplacement);
     if(deplacement=='Q'|| deplacement=='q'){

@@ -3,9 +3,9 @@
 Dentiste jetter_Instrument(Dentiste personnage){
     Dentiste objet;
     
-    scanf("%c", &objet.hand);
+    scanf("%c", &objet.mains);
     
-    if(objet.hand=='W' || objet.hand=='w'){
+    if(objet.mains=='W' || objet.mains=='w'){
         printf("Vous avez jetté un instrument ! \n");
     }
     else{

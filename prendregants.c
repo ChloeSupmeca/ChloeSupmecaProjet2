@@ -1,15 +1,15 @@
 #include "projet.h"
 
-void Gants_Dentiste(Dentiste gants){ // ici le dentiste prend des gants
+void Gants_Dentiste(Dentiste prendregants){ // ici le dentiste prend des gants
     Gants objet;
-    if(gants.g.gloves==0){
+    if(prendregants.g.gloves==0){
         if(objet=='G' || objet=='g'){
             printf("Voulez vous prendre des gants ? \n");
-           scanf("%d", &gants.g.gloves);
+           scanf("%d", &prendregants.g.gant);
            if(gants.g.gloves==0){
                printf("Vous n'avez pas pris de gants ! \n");
            }
-           else if(gants.g.gloves==1){
+           else if(prendregants.g.gant==1){
                 printf("Vous avez pris de gants ! \n");
            }
            else{

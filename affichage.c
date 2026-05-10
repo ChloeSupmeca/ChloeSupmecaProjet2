@@ -67,6 +67,10 @@ void Plateau(Partie *p) {
     p->grille[7][5] = FAUTEUIL;
     p->grille[7][6] = FAUTEUIL;
     p->grille[7][7] = FAUTEUIL;
+	p->grille[6][4] = PLATEAU;
+	p->grille[6][5] = PLATEAU;
+	p->grille[6][6] = PLATEAU;
+	p->grille[6][7] = PLATEAU;
     p->grille[0][2]= INSTRUMENTS;
     p->grille[0][3]= INSTRUMENTS;
     p->grille[0][4]= INSTRUMENTS;

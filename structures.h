@@ -57,6 +57,7 @@ typedef struct {
 typedef enum {
     SOL,
     FAUTEUIL,
+    PLATEAU,
     INSTRUMENTS,
     RECYCLAGE,
     BIOLOGIQUE,

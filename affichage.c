@@ -38,7 +38,7 @@ void affichage(Partie* p){
 
     printf("\n -----------------------\n");
     printf("ARGENT : %d\n", p->argent);
-    printf("TEMPS  : %d\n", p->temps);
+    printf("TEMPS  : %f\n", p->temps);
 
     printf("Patients satisfaits   : %d\n", p->patients_satisfaits);
     printf("patients mécontents : %d\n", p->patients_mecontents);

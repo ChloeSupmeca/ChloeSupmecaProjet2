@@ -48,7 +48,7 @@ typedef struct {
 typedef struct {
     int occupe_fauteuil;
     int patience;
-    Pathologie Etat_Instrument[2];
+    Etat_Instrument etat_instruments[2];
     int traite;
     Position p;
     Pathologie patho;

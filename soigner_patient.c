@@ -1,6 +1,6 @@
 #include "structures.h"
 
-Dentiste soigner_Patient(Dentist personnage){
+Dentiste soigner_Patient(Dentiste personnage){
     Dentiste soin;
     scanf("%c", &soin);
     if(soin=='K' || soin=='k'){

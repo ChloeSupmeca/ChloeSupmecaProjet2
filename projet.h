@@ -10,12 +10,12 @@ typedef enum{ // outils dentaires
 }Outil;   
 
 typedef enum{  // il s'agit de la présence de gants
-      NON = 0; OUI=1;
+      NON = 0, OUI=1,
 }Gants; 
 
 
 typedef struct{ // création du dentiste
-      int position[x][y];
+      int position[LONGUEUR][LARGEUR];
       Outil ouinon;
       Gants gants;
 }Dentiste;

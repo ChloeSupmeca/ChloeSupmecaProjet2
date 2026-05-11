@@ -1,29 +1,32 @@
 #include "structures.h"
 
-void deplacement_Dentiste(Partie *p, int dx, int dy){
-   int direction;
+void deplacement_Dentiste(Partie *p, char direction){
     int newX = p->dentiste.p.x;
     int newY = p->dentiste.p.y;
-switch (direction) {
+    
+    switch (direction) {
         case '5': 
-           newY--; 
-           break;  // haut
+            newY--; 
+            break;  // haut
         case '2': 
-           newY++; 
-           break;  // bas
+            newY++; 
+            break;  // bas
         case '1':
-           newX--; 
-           break;  // gauche
-        case '3': newX++;
-           break;  // droite
+            newX--; 
+            break;  // gauche
+        case '3': 
+            newX++;
+            break;  // droite
         default: 
-           return;
+            return;
     }
-   if (newX < 0 || newX >= LONGUEUR || newY < 0 || newY >= HAUTEUR)
+    
+    if (newX < 0 || newX >= LONGUEUR || newY < 0 || newY >= HAUTEUR)
         return;
-    if(p->grille[newX][newY]== SOL){
-        p->dentiste.p.x=newX;
-        p->dentiste.p.y=newY;
+        
+    if(p->grille[newX][newY] == SOL){
+        p->dentiste.p.x = newX;
+        p->dentiste.p.y = newY;
     }
 }
     //FONCTION POUR INTERAGIR :

@@ -1,5 +1,6 @@
 void fin_de_Partie(Partie *p){
-   int x,y;
+   int x=0;
+	int y=0;
    int occupe;
    occupe=presence_patient(p, x, y);
 	for (int i=0; i<N_FAUTEUILS; i++){

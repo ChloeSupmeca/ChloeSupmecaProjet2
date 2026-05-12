@@ -432,7 +432,6 @@ void action_prendre_instrument(Partie* p) {
                 printf("[!] Vous portez déjà un objet !\n");
                 return;
             }
-            /* Choisir quel instrument prendre */
             printf("Quel instrument prendre ?\n");
             for (int k = 1; k < NB_INSTRUMENTS; k++) {
                 printf("  %d: %s (cout: %d€)\n", k, noms_instruments[k], couts[k]);
@@ -443,17 +442,16 @@ void action_prendre_instrument(Partie* p) {
             if (choix <= 0 || choix >= NB_INSTRUMENTS) return;
 
             d->mains.i = (Instrument)choix;
-            d->mains.salete = !d->g.porte_gants || d->g.gants_sales; /* souille si pas de gants propres */
-            p->argent -= couts[choix]; /* cout de l'instrument */
+            d->mains.salete = !d->g.porte_gants || d->g.gants_sales; 
+            p->argent -= couts[choix]; 
             printf("[+] Instrument %s pris%s\n", noms_instruments[choix],
-                d->mains.salete ? " (SOUILLÉ car pas de gants propres)" : "");
+                d->mains.salete ? " (Instrument souillé veuillez mettre des gants propres)" : "");
             return;
         }
     }
     printf("[!] Pas d'instruments a portée.\n");
 }
 
-/* Prendre des gants */
 void action_prendre_gants(Partie* p) {
     int dx[] = {-1, 1, 0, 0};
     int dy[] = {0, 0, -1, 1};
@@ -471,7 +469,7 @@ void action_prendre_gants(Partie* p) {
             }
             d->g.porte_gants = 1;
             d->g.gants_sales = 0;
-            p->argent -= 1; /* cout des gants */
+            p->argent -= 1; 
             printf("[+] Gants enfilés !\n");
             return;
         }
@@ -479,7 +477,6 @@ void action_prendre_gants(Partie* p) {
     printf("[!] Pas de gants à portée.\n");
 }
 
-/* Deposer un instrument sur un plateau de patient */
 void action_deposer_plateau(Partie* p) {
     int dx[] = {-1, 1, 0, 0};
     int dy[] = {0, 0, -1, 1};
@@ -499,7 +496,7 @@ void action_deposer_plateau(Partie* p) {
                 return;
             }
             if (d->mains.salete) {
-                printf("[!] L'instrument est souillé, impossible de le poser sur un plateau stérile !\n");
+                printf("[!] L'instrument est souillé, impossible de le poser sur le plateau !\n");
                 return;
             }
             if (!d->g.porte_gants || d->g.gants_sales) {

@@ -14,6 +14,12 @@ int presence_patient(Partie* p,int x, int y){
 }
 
 void affichage(Partie* p){
+	printf("--------------------------------------------------------------------\n");
+    printf("|                    CABINET DENTAIRE                             |\n");
+    printf("|__________________________________________________________________|\n\n");
+
+	printf("D=Dentiste  F=Fauteuil  T=Plateau  I=Instruments  G=Gants\n");
+    printf("R=Recyclage B=Biologique  M=Mur  P=Patient\n\n");
 
     int x, y;
     for (y = 0; y < HAUTEUR; y++) {

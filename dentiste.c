@@ -52,6 +52,11 @@ typedef enum {
     FURIEUX
 } Humeur;
 
+typedef enum{
+    GANTS=9;
+}Gants_enum;
+
+
 /* ===================== STRUCTURES ===================== */
 
 typedef struct {

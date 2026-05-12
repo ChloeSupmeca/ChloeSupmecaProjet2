@@ -116,7 +116,7 @@ typedef struct {
 
 /* ===================== DONNEES STATIQUES ===================== */
 
-int couts[NB_INSTRUMENTS] = {0, 1, 2, 1, 1, 3, 3, 3}; 
+int couts[NB_INSTRUMENTS] = {0, 1, 2, 1, 1, 3, 3, 3}; //pas de variables globales
 
 const char* noms_instruments[NB_INSTRUMENTS] = {
     "AUCUN", "PINCE", "ECARTEURS", "SERINGUE", "MIROIR", "SONDE", "FRAISE", "DETARTREUSE"

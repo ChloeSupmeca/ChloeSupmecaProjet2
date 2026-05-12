@@ -69,11 +69,11 @@ typedef struct{
 
 typedef struct {
     int nb_instruments;
-    Instrument instruments[2]; 
+    Instrument instruments[3]; 
 } Pathologie; 
 
 typedef struct {
-    Instrument pose[2];
+    Instrument pose[3];
     int nb_pose;
     int sale; /* 1 si plateau souille (apres soins) */
 } Table_Patient;

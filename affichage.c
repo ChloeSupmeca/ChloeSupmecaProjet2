@@ -113,13 +113,49 @@ p->patients_mecontents=0;
 	p->dentiste.p.x=3;
 	p->dentiste.p.y=3;
 	p->dentiste.mains.i=AUCUN;
-
-	for(int i=0; i<N_FAUTEUILS; i++){
-		p->patients[i].occupe_fauteuil=0;
-	}
+if (y >= 4 && y <= 7) {
+    int idx = y - 4;
+    Patient* pat = &p->patients[idx];
+     if (pat->occupe_fauteuil) {
+        printf("  Patient %d [%s] ", idx+1, noms_pathologies[pat->type_patho]);
+afficher_barre_patience(pat);
+printf(" | TABLE: ");
+            if (pat->table.nb_pose == 0) {
+                printf("vide");
+            } else {
+                    for (int k = 0; k < pat->table.nb_pose; k++)
+                        printf("%s ", symbole_instrument(pat->table.pose[k]));
+                }
 }
 
+printf(" | Manque: ");
+    int manque = 0;
+        for (int k = 0; k < pat->patho.nb_instruments; k++) {
+            if (!instrument_deja_pose(pat, pat->patho.instruments[k])) {
+                    printf("%s ", noms_instruments[pat->patho.instruments[k]]);
+                     manque++;
+                    }
+                }
+                if (!manque) printf("COMPLET");
+            }
+        }
+        printf("\n");
+printf("\n─────────────────────────────────────────────\n");
+    printf("Dentiste pos (%d,%d) | Mains: %s%s | Gants: %s%s\n",
+        p->dentiste.p.x, p->dentiste.p.y,
+        noms_instruments[p->dentiste.mains.i],
+        p->dentiste.mains.salete ? " (SOUILLE)" : "",
+        p->dentiste.g.porte_gants ? "OUI" : "NON",
+        p->dentiste.g.gants_sales ? " (SALES)" : "");
+printf("─────────────────────────────────────────────\n");
+    printf("Argent: %d€ | Tours: %d | satisfaits : %d  mecontents : %d  furieux : %d\n",
+        p->argent, p->tours,
+        p->patients_satisfaits, p->patients_mecontents, p->patients_furieux);
+printf("─────────────────────────────────────────────\n");
+    printf("Déplacements: 5=gauche 2=bas 1=haut 3=droite | e=action | x=quitter\n"); //s=sauvegarder a rajouter peut etre
+    printf("─────────────────────────────────────────────\n");
 
+    }
 
 int main (){
 	Partie p;

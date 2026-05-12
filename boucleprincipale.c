@@ -110,3 +110,16 @@ int plateau_a_patient(Partie* p, int x, int y, int* idx_patient) {
     }
     return 0;
 }
+void nouvelle_partie(Partie* p) {
+    memset(p, 0, sizeof(Partie));
+    init_grille(p);
+    p->dentiste.p.x = 3;
+    p->dentiste.p.y = 3;
+    p->dentiste.mains.i = AUCUN;
+    p->debut_partie = time(NULL);
+    for (int i = 0; i < N_FAUTEUILS; i++) {
+        p->patients[i].occupe_fauteuil = 0;
+        p->patients[i].p.x = 7;
+        p->patients[i].p.y = 4 + i;
+    }
+}

@@ -54,3 +54,24 @@ int prix_prestation(Pathologie* patho) {
     }
     return total;
 }
+
+int instrument_utile(Patient* pat, Instrument instr) {
+    for (int i = 0; i < pat->patho.nb_instruments; i++) {
+        if (pat->patho.instruments[i] == instr) return 1;
+    }
+    return 0;
+}
+
+int instrument_deja_pose(Patient* pat, Instrument instr) {
+    for (int i = 0; i < pat->plateau.nb_pose; i++) {
+        if (pat->plateau.pose[i] == instr) return 1;
+    }
+    return 0;
+}
+
+int plateau_complet(Patient* pat) {
+    for (int i = 0; i < pat->patho.nb_instruments; i++) {
+        if (!instrument_deja_pose(pat, pat->patho.instruments[i])) return 0;
+    }
+    return 1;
+}

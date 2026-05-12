@@ -522,7 +522,7 @@ void action_deposer_plateau(Partie* p) {
     printf("  Pas de plateau à portée.\n");
 }
 
-/* Soigner un patient */
+
 void action_soigner(Partie* p) {
     int dx[] = {-1, 1, 0, 0};
     int dy[] = {0, 0, -1, 1};
@@ -542,7 +542,7 @@ void action_soigner(Partie* p) {
                 return;
             }
             if (!d->g.porte_gants || d->g.gants_sales) {
-                /* Patient prend peur, part furieux, plateau souille */
+
                 printf("[!!!] Le patient prend peur (gants sales/absents) et part furieux !\n");
                 pat->plateau.sale = 1;
                 pat->occupe_fauteuil = 0;
@@ -560,7 +560,7 @@ void action_soigner(Partie* p) {
                 return;
             }
 
-            /* Soins effectues */
+            
             int prix = prix_prestation(&pat->patho);
             pat->traite = 1;
             pat->plateau.sale = 1;

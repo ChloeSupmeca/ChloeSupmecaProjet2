@@ -31,10 +31,10 @@ void affichage(Partie* p){
                 printf("D ");
             }
            
-            else if (presence_patient(p, x, y)) {
+            if (presence_patient(p, x, y)) {
                 printf("P ");
             }
-            else {
+            else{
                 printf("%c ", symboleCase(p->grille[x][y]));
             }
           

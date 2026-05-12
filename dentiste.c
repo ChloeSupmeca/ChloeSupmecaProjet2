@@ -183,8 +183,6 @@ int presence_patient(Partie* p, int x, int y) {
     return 0;
 }
 
-/* Fauteuil associe a chaque plateau */
-/* Plateaux en x=6, fauteuils en x=7, meme y */
 int plateau_a_patient(Partie* p, int x, int y, int* idx_patient) {
     if (x == 6 && y >= 4 && y <= 7) {
         for (int i = 0; i < N_FAUTEUILS; i++) {
@@ -257,7 +255,6 @@ void nouvelle_partie(Partie* p) {
 /* ===================== ARRIVEE DES PATIENTS ===================== */
 
 void faire_arriver_patient(Partie* p) {
-    /* Cherche un fauteuil libre */
     int idx = -1;
     for (int i = 0; i < N_FAUTEUILS; i++) {
         if (!p->patients[i].occupe_fauteuil) { idx = i; break; }
@@ -271,17 +268,14 @@ void faire_arriver_patient(Partie* p) {
     pat->p.y = 4 + idx;
     pat->type_patho = rand() % NB_PATHOLOGIES;
     pat->patho = pathologies_data[pat->type_patho];
-    pat->patience_max = 15 + rand() % 20; /* entre 15 et 34 tours */
+    pat->patience_max = 20 + rand() % 25; 
     pat->patience = pat->patience_max;
     pat->plateau.nb_pose = 0;
     pat->plateau.sale = 0;
-    pat->plateau_pose = 1; /* le plateau est toujours a cote du fauteuil */
+    pat->plateau_pose = 1; 
     pat->gratuit = 0;
 
-    /* Si un plateau sale est encore present (ancien patient), le nouveau est mecontent -> gratuit */
-    /* On verifie si le plateau en x=6,y=4+idx est "sale" (ancien contenu) */
-    /* Ici on gere ca via le flag gratuit */
-
+    
     printf("\n[!] Un patient arrive en fauteuil %d ! Pathologie : %s\n",
            idx + 1, noms_pathologies[pat->type_patho]);
     printf("    Instruments necessaires : ");
@@ -291,9 +285,7 @@ void faire_arriver_patient(Partie* p) {
     printf("\n");
 }
 
-/* Verifie les arrivees aleatoires (environ toutes les 8-12 actions) */
 void gerer_arrivees(Partie* p) {
-    /* 1 chance sur 8 par tour qu'un patient arrive si fauteuil libre */
     int fauteuil_libre = 0;
     for (int i = 0; i < N_FAUTEUILS; i++)
         if (!p->patients[i].occupe_fauteuil) { fauteuil_libre = 1; break; }
@@ -319,14 +311,11 @@ void gerer_patience(Partie* p) {
         pat->patience--;
 
         if (pat->patience <= 0) {
-            /* Patient furieux -> part sans payer */
-            printf("\n[!!!] Patient %d furieux ! Il part sans payer !\n", i + 1);
-            /* Plateau souille comme apres soins */
+            printf("\n Patient %d furieux ! Il part sans payer !\n", i + 1);
             pat->plateau.sale = 1;
             pat->occupe_fauteuil = 0;
             p->patients_furieux++;
 
-            /* Condition de fin : tous pleins + un furieux */
             if (tous_pleins) {
                 printf("\n=== FIN DE PARTIE : Cabinet plein et patient furieux ! ===\n");
                 p->partie_terminee = 1;
@@ -340,10 +329,6 @@ void gerer_patience(Partie* p) {
 
 void afficher_barre_patience(Patient* pat) {
     int pct = (pat->patience * 10) / (pat->patience_max > 0 ? pat->patience_max : 1);
-    /* Couleurs ANSI */
-    if (pct > 6)       printf("\033[32m"); /* vert */
-    else if (pct > 3)  printf("\033[33m"); /* jaune */
-    else               printf("\033[31m"); /* rouge */
 
     printf("[");
     for (int k = 0; k < 10; k++) printf(k < pct ? "#" : ".");

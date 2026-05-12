@@ -1,4 +1,4 @@
-void action_jeter_gants(Partie* p) {
+void action_jeter_gants(Partie* p) {  // ici le dentiste jette ses gants
     int dx[] = {-1, 1, 0, 0};
     int dy[] = {0, 0, -1, 1};
     Dentiste* d = &p->dentiste;

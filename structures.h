@@ -85,8 +85,8 @@ typedef struct {
     int temps_attente; //temps ecoulé depuis arrivée 
     int traite;
     Pathologie_Type type_patho;
-    Plateau_Patient plateau;
-    int plateau_pose;   
+    Table_Patient table;
+    int table_pose;   
     int gratuit;//patient furieux part sans payer
     Position p;
     Pathologie patho;

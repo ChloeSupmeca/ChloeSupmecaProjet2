@@ -107,3 +107,21 @@ typedef struct {
     int score_final;
     time_t debut_partie;
 } Partie;
+
+int couts[NB_INSTRUMENTS] = {0, 1, 2, 1, 1, 3, 3, 3};
+const char* noms_instruments[NB_INSTRUMENTS] = {
+    "AUCUN", "PINCE", "ECARTEURS", "SERINGUE", "MIROIR", "SONDE", "FRAISE", "DETARTREUSE"
+};
+
+const char* noms_pathologies[NB_PATHOLOGIES] = {
+    "Caries", "Aphtes", "Parodontite", "Gingivite", "Abces", "Malocclusion"
+};
+
+Pathologie pathologies_data[NB_PATHOLOGIES] = {
+    {1, {DETARTREUSE, AUCUN, AUCUN}},  // CARIES 
+    {1, {MIROIR,      AUCUN, AUCUN}},  // APHTES 
+    {1, {PINCE,       AUCUN, AUCUN}},  // PARODONTITE 
+    {2, {ECARTEURS,   DETARTREUSE, AUCUN}},  // GINGIVITE 
+    {2, {SONDE,       SERINGUE,    AUCUN}},  // ABCES 
+    {2, {ECARTEURS,   FRAISE,      AUCUN}}   // MALOCCLUSION 
+};

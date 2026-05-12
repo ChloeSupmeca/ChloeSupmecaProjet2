@@ -107,7 +107,7 @@ void Plateau(Partie *p) {
     
 
 p->argent = 0;
-p->temps = 0;
+p->temps_attente= 0;
 p->patients_satisfaits=0; 
 p->patients_mecontents=0; 
 	p->dentiste.p.x=3;

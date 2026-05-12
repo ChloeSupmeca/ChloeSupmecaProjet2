@@ -410,15 +410,13 @@ void affichage(Partie* p) {
         p->argent, p->tours,
         p->patients_satisfaits, p->patients_mecontents, p->patients_furieux);
 
-    /* Commandes */
     printf("─────────────────────────────────────────────\n");
-    printf("Déplacements: 5=gauche 2=bas 1=haut 3=droite | e=action | s=sauvegarder | x=quitter\n");
+    printf("Déplacements: 4=gauche 5=bas 8=haut 6=droite | e=action | s=sauvegarder | x=quitter\n");
     printf("─────────────────────────────────────────────\n");
 }
 
 /* ===================== ACTIONS ===================== */
 
-/* Prendre un instrument */
 void action_prendre_instrument(Partie* p) {
     int dx[] = {-1, 1, 0, 0};
     int dy[] = {0, 0, -1, 1};

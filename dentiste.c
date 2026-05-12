@@ -6,7 +6,7 @@
 #define LONGUEUR 8
 #define HAUTEUR 9
 #define N_FAUTEUILS 4
-#define SAVE_FILE "sauvegarde.dat" 
+#define SAVE_FILE "sauvegarde.dat"
 #define SCORES_FILE "scores.txt"
 #define PATHO_FILE "pathologies.txt"
 #define COUTS_FILE "couts.txt"
@@ -56,7 +56,7 @@ typedef enum {
 
 typedef struct {
     Instrument i;
-    int salete; /* 0=propre, 1=souillee */
+    int salete; 
 } Etat_Instrument;
 
 typedef struct {
@@ -80,25 +80,24 @@ typedef struct {
     Instrument instruments[3];
 } Pathologie;
 
-/* Plateau d'un fauteuil : liste des instruments poses dessus */
 typedef struct {
     Instrument pose[3];
     int nb_pose;
-    int sale; /* 1 si plateau souille (apres soins) */
+    int sale; 
 } Plateau_Patient;
 
 typedef struct {
     int occupe_fauteuil;
-    int patience;        /* temps restant en "tours" avant impatience */
+    int patience;       
     int patience_max;
-    int temps_attente;   /* tours ecoules depuis arrivee */
+    int temps_attente;   
     int traite;
-    Position p;          /* position du fauteuil */
+    Position p;         
     Pathologie patho;
     Pathologie_Type type_patho;
     Plateau_Patient plateau;
-    int plateau_pose;    /* 1 si le plateau est a cote */
-    int gratuit;         /* 1 si patient ne paiera pas (hygiène mauvaise a l'arrivee) */
+    int plateau_pose;    
+    int gratuit;       
 } Patient;
 
 typedef struct {
@@ -117,9 +116,7 @@ typedef struct {
 
 /* ===================== DONNEES STATIQUES ===================== */
 
-/* Couts des instruments */
-int couts[NB_INSTRUMENTS] = {0, 1, 2, 1, 1, 3, 3, 3}; /* index = Instrument enum */
-/* 0=AUCUN, PINCE=1, ECARTEURS=2, SERINGUE=1, MIROIR=1, SONDE=3, FRAISE=3, DETARTREUSE=3 */
+int couts[NB_INSTRUMENTS] = {0, 1, 2, 1, 1, 3, 3, 3}; 
 
 const char* noms_instruments[NB_INSTRUMENTS] = {
     "AUCUN", "PINCE", "ECARTEURS", "SERINGUE", "MIROIR", "SONDE", "FRAISE", "DETARTREUSE"
@@ -141,8 +138,7 @@ Pathologie pathologies_data[NB_PATHOLOGIES] = {
 
 /* ===================== UTILITAIRES ===================== */
 
-/* Calcul du prix d'une prestation (somme des couts des instruments necessaires) */
-int prix_prestation(Pathologie* patho) {
+int prix_prestation(Pathologie* patho) { //RAJOUTER PRIX PRESTATION EN FONCTION MALADIES
     int total = 0;
     for (int i = 0; i < patho->nb_instruments; i++) {
         total += couts[patho->instruments[i]];
@@ -150,21 +146,7 @@ int prix_prestation(Pathologie* patho) {
     return total;
 }
 
-/* Noms courts pour affichage */
-const char* symbole_instrument(Instrument i) {
-    switch(i) {
-        case PINCE:      return "PIN";
-        case ECARTEURS:  return "ECA";
-        case SERINGUE:   return "SER";
-        case MIROIR:     return "MIR";
-        case SONDE:      return "SON";
-        case FRAISE:     return "FRA";
-        case DETARTREUSE:return "DET";
-        default:         return "---";
-    }
-}
 
-/* Retourne 1 si l'instrument est dans la pathologie du patient */
 int instrument_utile(Patient* pat, Instrument instr) {
     for (int i = 0; i < pat->patho.nb_instruments; i++) {
         if (pat->patho.instruments[i] == instr) return 1;

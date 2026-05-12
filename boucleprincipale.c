@@ -1,13 +1,12 @@
 void boucle_jeu(Partie* p) {
 char cmd;
 while (!p->partie_terminee) {
-/* Arrivee aleatoire de patients */
+
 gerer_arrivees(p);
 
-/* Affichage */
 affichage(p);
 
-/* Saisie commande */
+
 printf("\nAction > ");
 fflush(stdout);
 cmd = 0;
@@ -39,11 +38,11 @@ if (p->tours % 3 == 0) gerer_patience(p);
 }
 
 /* Fin de partie */
-printf("\n═══════════════════════════════════\n");
+printf("\n----------------------------------\n");
 printf(" FIN DE PARTIE\n");
-printf("═══════════════════════════════════\n");
+printf("------------------------------------\n");
 printf("Score final : %d€\n", p->score_final);
-printf("Tours joués : %d\n", p->tours);
+printf("Temps : %d\n", p->tours);
 printf("Satisfaits : %d\n", p->patients_satisfaits);
 printf("Mécontents : %d\n", p->patients_mecontents);
 printf("Furieux : %d\n", p->patients_furieux);

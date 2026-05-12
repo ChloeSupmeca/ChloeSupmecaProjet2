@@ -12,10 +12,10 @@ comm = 0;
 if (scanf(" %c", &cmd) != 1) continue;
 
 switch(cmd) {
-case '5': deplacer(p, -1, 0); break; /* gauche */
-case '3': deplacer(p, 1, 0); break; /* droite */
-case '1': deplacer(p, 0, -1); break; /* haut */
-case '2': deplacer(p, 0, 1); break; /* bas */
+case '5': deplacer(p, -1, 0); break; // gauche 
+case '3': deplacer(p, 1, 0); break; // droite 
+case '1': deplacer(p, 0, -1); break; // haut 
+case '2': deplacer(p, 0, 1); break; //bas 
 case 'e': case 'E': action_e(p); break;
 //case 's': case 'S': sauvegarder(p); break;
 case 'x': case 'X':
@@ -45,4 +45,12 @@ printf("Mécontents : %d\n", p->patients_mecontents);
 printf("Furieux : %d\n", p->patients_furieux);
 enregistrer_score(p);
 //remove(SAVE_FILE);
+}
+
+int prix_prestation(Pathologie* patho) {
+    int total = 0;
+    for (int i = 0; i < patho->nb_instruments; i++) {
+        total += couts[patho->instruments[i]];
+    }
+    return total;
 }

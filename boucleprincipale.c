@@ -28,10 +28,10 @@ case 'e':
     case 'E': 
     action_e(p); 
         break;
-//case 's': 
+/*//case 's': 
         case 'S': 
-    sauvegarder(p); 
-            break;
+   // sauvegarder(p); 
+            break;*/
 case 'x':
     case 'X':
 /*printf("Voulez-vous sauvegarder avant de quitter ? (o/n) ");

@@ -99,7 +99,7 @@ typedef struct {
     Patient patients[N_FAUTEUILS];
     Dentiste dentiste;
     int argent;
-    int temps;
+    int tours;
     int patients_satisfaits;
     int patients_mecontents;
     int patients_furieux;

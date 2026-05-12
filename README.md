@@ -5,31 +5,37 @@ Vous incarnez le dentiste.
 
 Pour vous déplacer :
 
-A gauche : Appuyer sur Q
+A gauche : Appuyer sur 5
 
-A droite : Appuyer sur D
+A droite : Appuyer sur 3
 
-En haut : Appuyer sur Z
+En haut : Appuyer sur 1
 
-En bas : Appuyer sur S
+En bas : Appuyer sur 2
 
 Pour prendre des gants :
 
-Appuyer sur G
+S'approcher de la boîte à gants et appuyer sur E
 
 Pour jetter les gants ou instruments :
 
-S'approcher de la poubelle et appuyer sur W
+S'approcher de la poubelle et appuyer sur E
 
 Pour soigner :
 
-S'approcher du patient et appuyer sur K
+S'approcher du patient et appuyer sur E
 
 Pour prendre un instrument :
 
-S'approcher de l'instrument et appuyer sur P
+S'approcher de l'instrument et appuyer sur E
 
+Pour sauvegarder :
 
+Appuyer sur S
+
+Pour sauvegarder et quitter :
+
+Appuyer sur X
 
 
 

@@ -52,7 +52,7 @@ typedef struct{
 }Etat_Instrument;
 
 typedef struct {
-    int porte_gant;
+    int porte_gants;
     int salete_gants;
 } Gants; 
 

@@ -6,7 +6,7 @@
 #define LONGUEUR 8
 #define HAUTEUR 9
 #define N_FAUTEUILS 4
-#define SAVE_FILE "sauvegarde.dat"
+#define SAVE_FILE "sauvegarde.dat" 
 #define SCORES_FILE "scores.txt"
 #define PATHO_FILE "pathologies.txt"
 #define COUTS_FILE "couts.txt"

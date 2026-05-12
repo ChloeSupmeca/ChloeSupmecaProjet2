@@ -75,3 +75,16 @@ int plateau_complet(Patient* pat) {
     }
     return 1;
 }
+
+int plateau_a_patient(Partie* p, int x, int y, int* idx_patient) {
+    if (x == 6 && y >= 4 && y <= 7) {
+        for (int i = 0; i < N_FAUTEUILS; i++) {
+            if (p->patients[i].occupe_fauteuil &&
+                p->patients[i].p.y == y) {
+                *idx_patient = i;
+                return 1;
+            }
+        }
+    }
+    return 0;
+}

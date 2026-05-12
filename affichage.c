@@ -45,7 +45,7 @@ void affichage(Partie* p){
 
     printf("\n -----------------------\n");
     printf("ARGENT : %d\n", p->argent);
-    printf("TEMPS  : %d\n", p->temps_attente);
+    printf("TEMPS  : %d\n", p->tours);
 
     printf("Patients satisfaits   : %d\n", p->patients_satisfaits);
     printf("patients mécontents : %d\n", p->patients_mecontents);
@@ -108,7 +108,7 @@ void Plateau(Partie *p) {
     
 
 p->argent = 0;
-p->temps_attente= 0;
+p->tours= 0;
 p->patients_satisfaits=0; 
 p->patients_mecontents=0; 
 	p->dentiste.p.x=3;

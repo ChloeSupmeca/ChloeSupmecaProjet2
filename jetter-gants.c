@@ -7,9 +7,9 @@ void action_jeter_gants(Partie* p) {
         int nx = d->p.x + dx[dir];
         int ny = d->p.y + dy[dir];
 
-        if (nx < 0 || nx >= LONGUEUR || ny < 0 || ny >= HAUTEUR)
+        if (nx < 0 || nx >= LONGUEUR || ny < 0 || ny >= HAUTEUR){
             continue;
-
+        }
         if (p->grille[nx][ny] == BIOLOGIQUE) {
 
             if (!d->g.porte_gants) {

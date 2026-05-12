@@ -139,7 +139,7 @@ printf(" | Manque: ");
                 }
                 if (!manque) printf("COMPLET");
             }
-        }
+        
         printf("\n");
 printf("\n─────────────────────────────────────────────\n");
     printf("Dentiste pos (%d,%d) | Mains: %s%s | Gants: %s%s\n",

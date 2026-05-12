@@ -330,24 +330,22 @@ void gerer_patience(Partie* p) {
 void afficher_barre_patience(Patient* pat) {
     int pct = (pat->patience * 10) / (pat->patience_max > 0 ? pat->patience_max : 1);
 
-    printf("[");
+    printf("["); //A VERIFIER
     for (int k = 0; k < 10; k++) printf(k < pct ? "#" : ".");
     printf("] %2d", pat->patience);
     printf("\033[0m");
 }
 
 void affichage(Partie* p) {
-    printf("\033[2J\033[H"); /* Clear screen */
+    //printf("\033[2J\033[H"); /* VIDE L'AFFICHAGE */
 
-    printf("╔══════════════════════════════════════════════════════════════════╗\n");
-    printf("║                    CABINET DENTAIRE                             ║\n");
-    printf("╚══════════════════════════════════════════════════════════════════╝\n\n");
+    printf("|==================================================================|\n");
+    printf("|                    CABINET DENTAIRE                              |\n");
+    printf("|==================================================================|\n\n");
 
-    /* Legende */
     printf("D=Dentiste  F=Fauteuil  T=Plateau  I=Instruments  G=Gants\n");
     printf("R=Recyclage B=Biologique  M=Mur  P=Patient\n\n");
 
-    /* Grille */
     printf("  ");
     for (int x = 0; x < LONGUEUR; x++) printf("%d ", x);
     printf("\n");
@@ -357,18 +355,18 @@ void affichage(Partie* p) {
         for (int x = 0; x < LONGUEUR; x++) {
             int pid = presence_patient(p, x, y);
             if (p->dentiste.p.x == x && p->dentiste.p.y == y) {
-                printf("\033[36mD\033[0m ");
+                printf("D");
             } else if (pid) {
-                printf("\033[35mP\033[0m ");
+                printf("P");
             } else {
                 char c = symboleCase(p->grille[x][y]);
-                if (c == 'M') printf("\033[90m#\033[0m ");
-                else if (c == 'F') printf("\033[33mF\033[0m ");
-                else if (c == 'T') printf("\033[34mT\033[0m ");
-                else if (c == 'I') printf("\033[32mI\033[0m ");
-                else if (c == 'G') printf("\033[32mG\033[0m ");
-                else if (c == 'R') printf("\033[33mR\033[0m ");
-                else if (c == 'B') printf("\033[31mB\033[0m ");
+                if (c == 'M') printf("#");
+                else if (c == 'F') printf("F");
+                else if (c == 'T') printf("T");
+                else if (c == 'I') printf("I");
+                else if (c == 'G') printf("G");
+                else if (c == 'R') printf("R");
+                else if (c == 'B') printf("B");
                 else printf("%c ", c);
             }
         }

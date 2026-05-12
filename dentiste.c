@@ -370,7 +370,6 @@ void affichage(Partie* p) {
                 else printf("%c ", c);
             }
         }
-        /* Infos patients sur la meme ligne */
         if (y >= 4 && y <= 7) {
             int idx = y - 4;
             Patient* pat = &p->patients[idx];
@@ -384,7 +383,6 @@ void affichage(Partie* p) {
                     for (int k = 0; k < pat->plateau.nb_pose; k++)
                         printf("%s ", symbole_instrument(pat->plateau.pose[k]));
                 }
-                /* Instruments manquants */
                 printf(" | Manque: ");
                 int manque = 0;
                 for (int k = 0; k < pat->patho.nb_instruments; k++) {
@@ -393,13 +391,12 @@ void affichage(Partie* p) {
                         manque++;
                     }
                 }
-                if (!manque) printf("\033[32m[COMPLET]\033[0m");
+                if (!manque) printf("COMPLET");
             }
         }
         printf("\n");
     }
 
-    /* Etat du dentiste */
     printf("\n─────────────────────────────────────────────\n");
     printf("Dentiste pos (%d,%d) | Mains: %s%s | Gants: %s%s\n",
         p->dentiste.p.x, p->dentiste.p.y,
@@ -408,9 +405,8 @@ void affichage(Partie* p) {
         p->dentiste.g.porte_gants ? "OUI" : "NON",
         p->dentiste.g.gants_sales ? " (SALES)" : "");
 
-    /* Stats */
     printf("─────────────────────────────────────────────\n");
-    printf("Argent: \033[32m%d€\033[0m | Tours: %d | ✓ %d  ~ %d  ✗ %d\n",
+    printf("Argent: %d€ | Tours: %d | Patients satisfaits %d  Patients mécontents %d  Patients furieux %d\n",
         p->argent, p->tours,
         p->patients_satisfaits, p->patients_mecontents, p->patients_furieux);
 

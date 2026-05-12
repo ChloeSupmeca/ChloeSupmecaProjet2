@@ -154,7 +154,6 @@ int instrument_utile(Patient* pat, Instrument instr) {
     return 0;
 }
 
-/* Retourne 1 si l'instrument est deja sur le plateau */
 int instrument_deja_pose(Patient* pat, Instrument instr) {
     for (int i = 0; i < pat->plateau.nb_pose; i++) {
         if (pat->plateau.pose[i] == instr) return 1;
@@ -162,7 +161,6 @@ int instrument_deja_pose(Patient* pat, Instrument instr) {
     return 0;
 }
 
-/* Retourne 1 si tous les instruments necessaires sont sur le plateau */
 int plateau_complet(Patient* pat) {
     for (int i = 0; i < pat->patho.nb_instruments; i++) {
         if (!instrument_deja_pose(pat, pat->patho.instruments[i])) return 0;
@@ -170,13 +168,11 @@ int plateau_complet(Patient* pat) {
     return 1;
 }
 
-/* Symbole de la case */
 char symboleCase(Case b) {
-    char symboles[] = {' ', 'F', 'T', 'I', 'R', 'B', 'G', 'M'};
+    char symboles[] = {' ', 'F', 'T', 'I', 'R', 'B', 'G', '#'};
     return symboles[(int)b];
 }
 
-/* Verifie si un patient est sur une case */
 int presence_patient(Partie* p, int x, int y) {
     for (int i = 0; i < N_FAUTEUILS; i++) {
         if (p->patients[i].occupe_fauteuil &&

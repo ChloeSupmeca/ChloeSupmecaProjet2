@@ -44,7 +44,7 @@ void affichage(Partie* p){
 
     printf("\n -----------------------\n");
     printf("ARGENT : %d\n", p->argent);
-    printf("TEMPS  : %f\n", p->temps);
+    printf("TEMPS  : %f\n", p->temps_attente);
 
     printf("Patients satisfaits   : %d\n", p->patients_satisfaits);
     printf("patients mécontents : %d\n", p->patients_mecontents);
@@ -86,7 +86,7 @@ void Plateau(Partie *p) {
     p->grille[4][8] = BIOLOGIQUE;
     p->grille[0][0]= MUR;
     p->grille[1][0]= MUR;
-    p->grille[5][0]= GANTS;
+    p->grille[5][0]= GANTS_PLACE;
     p->grille[6][0]= MUR;
     p->grille[7][0]= MUR;
     p->grille[0][1]= MUR;

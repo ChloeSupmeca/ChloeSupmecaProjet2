@@ -78,6 +78,7 @@ typedef struct {
 typedef struct {
   int nb_instruments;
   Instrument instruments[3];
+  int prix;
 } Pathologie;
 
 /* Plateau d'un fauteuil : liste des instruments poses dessus */

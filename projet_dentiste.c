@@ -146,11 +146,9 @@ Pathologie pathologies_data[NB_PATHOLOGIES];
 
 /* Calcul du prix d'une prestation (somme des couts des instruments necessaires) */
 int prix_prestation(Pathologie* patho) {
-int total = 0;
-for (int i = 0; i < patho->nb_instruments; i++) {
-total += couts[patho->instruments[i]];
-}
-return total;
+ 
+    return patho->prix;
+
 }
 
 /* Noms courts pour affichage */
@@ -388,6 +386,50 @@ void charger_couts() {
         if (id >= 0 && id < NB_INSTRUMENTS) {
             couts[id] = cout;
         }
+    }
+
+    fclose(f);
+}
+
+void charger_pathologies() {
+    FILE* f = fopen(PATHO_FILE, "r");
+
+    if (!f) {
+        printf("Erreur ouverture %s\n", PATHO_FILE);
+        exit(1);
+    }
+
+    char ligne[256];
+
+    int idx = 0;
+
+    while (fgets(ligne, sizeof(ligne), f) && idx < NB_PATHOLOGIES) {
+
+        char* token = strtok(ligne, " \n");
+
+        if (!token) continue;
+
+        int nb_instr = 0;
+
+        while (1) {
+
+            token = strtok(NULL, " \n");
+
+            if (!token) break;
+
+            /* Si c'est un nombre => prix */
+            if (token[0] >= '0' && token[0] <= '9') {
+                pathologies_data[idx].prix = atoi(token);
+                break;
+            }
+
+            pathologies_data[idx].instruments[nb_instr++] =
+                instrument_depuis_nom(token);
+        }
+
+        pathologies_data[idx].nb_instruments = nb_instr;
+
+        idx++;
     }
 
     fclose(f);
@@ -921,6 +963,8 @@ remove(SAVE_FILE);
 
 int main(void) {
 srand((unsigned)time(NULL));
+    charger_couts();
+charger_pathologies();
 Partie p;
 
 int choix = 1;

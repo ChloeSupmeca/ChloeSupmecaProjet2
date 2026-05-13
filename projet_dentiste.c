@@ -117,9 +117,10 @@ time_t debut_partie;
 
 /* ===================== DONNEES STATIQUES ===================== */
 
-/* Couts des instruments */
-int couts[NB_INSTRUMENTS] = {0, 1, 2, 1, 1, 3, 3, 3}; /* index = Instrument enum */
-/* 0=AUCUN, PINCE=1, ECARTEURS=2, SERINGUE=1, MIROIR=1, SONDE=3, FRAISE=3, DETARTREUSE=3 */
+
+
+int couts[NB_INSTRUMENTS];
+
 
 const char* noms_instruments[NB_INSTRUMENTS] = {
 "AUCUN", "PINCE", "ECARTEURS", "SERINGUE", "MIROIR", "SONDE", "FRAISE", "DETARTREUSE"
@@ -130,14 +131,16 @@ const char* noms_pathologies[NB_PATHOLOGIES] = {
 };
 
 /* Pathologies avec leurs instruments */
-Pathologie pathologies_data[NB_PATHOLOGIES] = {
-{1, {DETARTREUSE, AUCUN_INSTR, AUCUN_INSTR}}, /* CARIES */
-{1, {MIROIR, AUCUN_INSTR, AUCUN_INSTR}}, /* APHTES */
-{1, {PINCE, AUCUN_INSTR, AUCUN_INSTR}}, /* PARODONTITE */
-{2, {ECARTEURS, DETARTREUSE, AUCUN_INSTR}}, /* GINGIVITE */
-{2, {SONDE, SERINGUE, AUCUN_INSTR}}, /* ABCES */
-{2, {ECARTEURS, FRAISE, AUCUN_INSTR}} /* MALOCCLUSION */
-};
+/*Pathologie pathologies_data[NB_PATHOLOGIES] = {
+//{1, {DETARTREUSE, AUCUN_INSTR, AUCUN_INSTR}}, /* CARIES */
+//{1, {MIROIR, AUCUN_INSTR, AUCUN_INSTR}}, /* APHTES */
+//{1, {PINCE, AUCUN_INSTR, AUCUN_INSTR}}, /* PARODONTITE */
+//{2, {ECARTEURS, DETARTREUSE, AUCUN_INSTR}}, /* GINGIVITE */
+//{2, {SONDE, SERINGUE, AUCUN_INSTR}}, /* ABCES */
+//{2, {ECARTEURS, FRAISE, AUCUN_INSTR}} /* MALOCCLUSION */
+//};*/
+
+Pathologie pathologies_data[NB_PATHOLOGIES];
 
 /* ===================== UTILITAIRES ===================== */
 
@@ -358,6 +361,37 @@ p->score_final = p->argent;
 }
 }
 
+
+Instrument instrument_depuis_nom(char* nom) {
+    if (strcmp(nom, "PINCE") == 0) return PINCE;
+    if (strcmp(nom, "ECARTEURS") == 0) return ECARTEURS;
+    if (strcmp(nom, "SERINGUE") == 0) return SERINGUE;
+    if (strcmp(nom, "MIROIR") == 0) return MIROIR;
+    if (strcmp(nom, "SONDE") == 0) return SONDE;
+    if (strcmp(nom, "FRAISE") == 0) return FRAISE;
+    if (strcmp(nom, "DETARTREUSE") == 0) return DETARTREUSE;
+
+    return AUCUN_INSTR;
+}
+
+void charger_couts() {
+    FILE* f = fopen(COUTS_FILE, "r");
+
+    if (!f) {
+        printf("Erreur ouverture %s\n", COUTS_FILE);
+        exit(1);
+    }
+
+    int id, cout;
+
+    while (fscanf(f, "%d %d", &id, &cout) == 2) {
+        if (id >= 0 && id < NB_INSTRUMENTS) {
+            couts[id] = cout;
+        }
+    }
+
+    fclose(f);
+}
 /* ===================== AFFICHAGE ===================== */
 
 void afficher_barre_patience(Patient* pat) {

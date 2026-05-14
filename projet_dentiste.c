@@ -471,15 +471,12 @@ void action_jeter_gants(Partie* p) {
 
 void afficher_barre_patience(Patient* pat) {
 int pct = (pat->patience * 10) / (pat->patience_max > 0 ? pat->patience_max : 1);
-/* Couleurs ANSI */
-if (pct > 6) printf("\033[32m"); /* vert */
-else if (pct > 3) printf("\033[33m"); /* jaune */
-else printf("\033[31m"); /* rouge */
+
 
 printf("[");
 for (int k = 0; k < 10; k++) printf(k < pct ? "#" : ".");
 printf("] %2d", pat->patience);
-printf("\033[0m");
+
 }
 
 void affichage(Partie* p) {
@@ -503,18 +500,18 @@ printf("%d ", y);
 for (int x = 0; x < LONGUEUR; x++) {
 int pid = presence_patient(p, x, y);
 if (p->dentiste.p.x == x && p->dentiste.p.y == y) {
-printf("\033[36mD\033[0m ");
+printf("D ");
 } else if (pid) {
-printf("\033[35mP\033[0m ");
+printf("P ");
 } else {
 char c = symboleCase(p->grille[x][y]);
-if (c == 'M') printf("\033[90m#\033[0m ");
-else if (c == 'F') printf("\033[33mF\033[0m ");
-else if (c == 'T') printf("\033[34mT\033[0m ");
-else if (c == 'I') printf("\033[32mI\033[0m ");
-else if (c == 'G') printf("\033[32mG\033[0m ");
-else if (c == 'R') printf("\033[33mR\033[0m ");
-else if (c == 'B') printf("\033[31mB\033[0m ");
+if (c == 'M') printf("# ");
+else if (c == 'F') printf("F ");
+else if (c == 'T') printf("T ");
+else if (c == 'I') printf("I ");
+else if (c == 'G') printf("G ");
+else if (c == 'R') printf("R ");
+else if (c == 'B') printf("B ");
 else printf("%c ", c);
 }
 }
@@ -541,7 +538,7 @@ printf("%s ", noms_instruments[pat->patho.instruments[k]]);
 manque++;
 }
 }
-if (!manque) printf("\033[32m[COMPLET]\033[0m");
+if (!manque) printf("[COMPLET]");
 }
 }
 printf("\n");
@@ -558,7 +555,7 @@ p->dentiste.g.gants_sales ? " (SALES)" : "");
 
 /* Stats */
 printf("─────────────────────────────────────────────\n");
-printf("Argent: \033[32m%d€\033[0m | Tours: %d | ✓ %d ~ %d ✗ %d\n",
+printf("Argent: %d€ | Tours: %d | satisfaits : %d | mécontents : %d | furieux : %d\n",
 p->argent, p->tours,
 p->patients_satisfaits, p->patients_mecontents, p->patients_furieux);
 

@@ -131,15 +131,15 @@ const char* noms_pathologies[NB_PATHOLOGIES] = {
 "Caries", "Aphtes", "Parodontite", "Gingivite", "Abces", "Malocclusion"
 };
 
-/* Pathologies avec leurs instruments */
-/*Pathologie pathologies_data[NB_PATHOLOGIES] = {
-//{1, {DETARTREUSE, AUCUN_INSTR, AUCUN_INSTR}}, /* CARIES */
-//{1, {MIROIR, AUCUN_INSTR, AUCUN_INSTR}}, /* APHTES */
-//{1, {PINCE, AUCUN_INSTR, AUCUN_INSTR}}, /* PARODONTITE */
-//{2, {ECARTEURS, DETARTREUSE, AUCUN_INSTR}}, /* GINGIVITE */
-//{2, {SONDE, SERINGUE, AUCUN_INSTR}}, /* ABCES */
-//{2, {ECARTEURS, FRAISE, AUCUN_INSTR}} /* MALOCCLUSION */
-//};*/
+/* Pathologies avec leurs instruments 
+Pathologie pathologies_data[NB_PATHOLOGIES] = {
+{1, {DETARTREUSE, AUCUN_INSTR, AUCUN_INSTR}}, CARIES 
+{1, {MIROIR, AUCUN_INSTR, AUCUN_INSTR}}, APHTES 
+{1, {PINCE, AUCUN_INSTR, AUCUN_INSTR}},  PARODONTITE 
+{2, {ECARTEURS, DETARTREUSE, AUCUN_INSTR}},  GINGIVITE 
+{2, {SONDE, SERINGUE, AUCUN_INSTR}},  ABCES 
+{2, {ECARTEURS, FRAISE, AUCUN_INSTR}}  MALOCCLUSION 
+};*/
 
 Pathologie pathologies_data[NB_PATHOLOGIES];
 

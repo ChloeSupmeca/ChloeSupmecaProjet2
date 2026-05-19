@@ -1,3 +1,4 @@
+#include"structures_projet_dentiste.h"
 /* ===================== BOUCLE PRINCIPALE ===================== */
 
 void boucle_jeu(Partie* p) {

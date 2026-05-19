@@ -106,6 +106,8 @@ typedef struct {
 Case grille[LONGUEUR][HAUTEUR];
 Patient patients[N_FAUTEUILS];
 Dentiste dentiste;
+int couts[NB_INSTRUMENTS];
+Pathologie pathologies_data[NB_PATHOLOGIES];
 int argent;
 int tours;
 int patients_satisfaits;
@@ -120,8 +122,6 @@ time_t debut_partie;
 
 
 
-int couts[NB_INSTRUMENTS];
-
 
 const char* noms_instruments[NB_INSTRUMENTS] = {
 "AUCUN", "PINCE", "ECARTEURS", "SERINGUE", "MIROIR", "SONDE", "FRAISE", "DETARTREUSE"
@@ -131,17 +131,9 @@ const char* noms_pathologies[NB_PATHOLOGIES] = {
 "Caries", "Aphtes", "Parodontite", "Gingivite", "Abces", "Malocclusion"
 };
 
-/* Pathologies avec leurs instruments 
-Pathologie pathologies_data[NB_PATHOLOGIES] = {
-{1, {DETARTREUSE, AUCUN_INSTR, AUCUN_INSTR}}, CARIES 
-{1, {MIROIR, AUCUN_INSTR, AUCUN_INSTR}}, APHTES 
-{1, {PINCE, AUCUN_INSTR, AUCUN_INSTR}},  PARODONTITE 
-{2, {ECARTEURS, DETARTREUSE, AUCUN_INSTR}},  GINGIVITE 
-{2, {SONDE, SERINGUE, AUCUN_INSTR}},  ABCES 
-{2, {ECARTEURS, FRAISE, AUCUN_INSTR}}  MALOCCLUSION 
-};*/
 
-Pathologie pathologies_data[NB_PATHOLOGIES];
+
+
 
 /* ===================== UTILITAIRES ===================== */
 
@@ -294,7 +286,7 @@ pat->occupe_fauteuil = 1;
 pat->p.x = 7;
 pat->p.y = 4 + idx;
 pat->type_patho = rand() % NB_PATHOLOGIES;
-pat->patho = pathologies_data[pat->type_patho];
+pat->patho = p->pathologies_data[pat->type_patho];
 pat->patience_max = 15 + rand() % 20; /* entre 15 et 34 tours */
 pat->patience = pat->patience_max;
 pat->plateau.nb_pose = 0;
@@ -373,7 +365,7 @@ Instrument instrument_depuis_nom(char* nom) {
     return AUCUN_INSTR;
 }
 
-void charger_couts() {
+void charger_couts(Partie* p) {
     FILE* f = fopen(COUTS_FILE, "r");
 
     if (!f) {
@@ -385,14 +377,14 @@ void charger_couts() {
 
     while (fscanf(f, "%d %d", &id, &cout) == 2) {
         if (id >= 0 && id < NB_INSTRUMENTS) {
-            couts[id] = cout;
+            p->couts[id] = cout;
         }
     }
 
     fclose(f);
 }
 
-void charger_pathologies() {
+void charger_pathologies(Partie* p) {
     FILE* f = fopen(PATHO_FILE, "r");
 
     if (!f) {
@@ -420,15 +412,15 @@ void charger_pathologies() {
 
             /* Si c'est un nombre => prix */
             if (token[0] >= '0' && token[0] <= '9') {
-                pathologies_data[idx].prix = atoi(token);
+                p->pathologies_data[idx].prix = atoi(token);
                 break;
             }
 
-            pathologies_data[idx].instruments[nb_instr++] =
+            p->pathologies_data[idx].instruments[nb_instr++] =
                 instrument_depuis_nom(token);
         }
 
-        pathologies_data[idx].nb_instruments = nb_instr;
+        p->pathologies_data[idx].nb_instruments = nb_instr;
 
         idx++;
     }
@@ -586,7 +578,7 @@ return;
 /* Choisir quel instrument prendre */
 printf("Quel instrument prendre ?\n");
 for (int k = 1; k < NB_INSTRUMENTS; k++) {
-printf(" %d: %s (cout: %d€)\n", k, noms_instruments[k], couts[k]);
+printf(" %d: %s (cout: %d€)\n", k, noms_instruments[k], p->couts[k]);
 }
 printf(" 0: Annuler\n> ");
 int choix;
@@ -595,7 +587,7 @@ if (choix <= 0 || choix >= NB_INSTRUMENTS) return;
 
 d->mains.i = (Instrument)choix;
 d->mains.salete = !d->g.porte_gants || d->g.gants_sales; /* souille si pas de gants propres */
-p->argent -= couts[choix]; /* cout de l'instrument */
+p->argent -= p->couts[choix]; /* cout de l'instrument */
 printf("[+] Instrument %s pris%s\n", noms_instruments[choix],
 d->mains.salete ? " (SOUILLÉ car pas de gants propres)" : "");
 return;
@@ -1004,10 +996,10 @@ remove(SAVE_FILE);
 
 int main(void) {
 srand((unsigned)time(NULL));
-    charger_couts();
-charger_pathologies();
 Partie p;
-
+memset(&p, 0, sizeof(Partie));
+charger_couts(&p);
+charger_pathologies(&p);
 int choix = 1;
 if (fichier_sauvegarde_existe()) {
 afficher_menu_principal();

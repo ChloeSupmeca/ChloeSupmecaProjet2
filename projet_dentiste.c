@@ -228,6 +228,15 @@ return 1;
 return 0;
 }
 
+int plateau_a_patient_ou_libre(Partie* p, int x, int y, int* idx_patient) {
+    if (p == NULL) return 0;
+    if (x == 6 && y >= 4 && y <= 7) {
+        *idx_patient = y - 4;
+        return 1;
+    }
+    return 0;
+}
+
 /* ===================== INITIALISATION ===================== */
 
 void init_grille(Partie* p) {
@@ -277,6 +286,7 @@ memset(p, 0, sizeof(Partie));
 init_grille(p);
 p->dentiste.p.x = 3;
 p->dentiste.p.y = 3;
+p->dentiste.porte_plateau = 0;
 p->dentiste.mains.i = AUCUN_INSTR;
 p->debut_partie = time(NULL);
 for (int i = 0; i < N_FAUTEUILS; i++) {
@@ -563,12 +573,13 @@ printf("\n");
 
 /* Etat du dentiste */
 printf("\n─────────────────────────────────────────────\n");
-printf("Dentiste pos (%d,%d) | Mains: %s%s | Gants: %s%s\n",
+printf("Dentiste pos (%d,%d) | Mains: %s%s | Gants: %s%s | Plateau: %s \n",
 p->dentiste.p.x, p->dentiste.p.y,
 noms_instruments[p->dentiste.mains.i],
 p->dentiste.mains.salete ? " (SOUILLE)" : "",
 p->dentiste.g.porte_gants ? "OUI" : "NON",
-p->dentiste.g.gants_sales ? " (SALES)" : "");
+p->dentiste.g.gants_sales ? " (SALES)" : "",
+p->dentiste.porte_plateau ? "PORTE" : "non");
 
 /* Stats */
 printf("─────────────────────────────────────────────\n");
@@ -778,9 +789,10 @@ printf("[!] Pas de patient à soigner à portée.\n");
 /* Vider le plateau dans la poubelle biologique */
 void action_vider_plateau_biologique(Partie* p) {
     if (p == NULL) return;
+    Dentiste* d = &p->dentiste;
 int dx[] = {-1, 1, 0, 0};
 int dy[] = {0, 0, -1, 1};
-Dentiste* d = &p->dentiste;
+
 
 for (int dir = 0; dir < 4; dir++) {
 int nx = d->p.x + dx[dir];
@@ -803,11 +815,16 @@ int adj = (abs(d->p.x - px) + abs(d->p.y - py) == 1) ||
 /* On simplifie: le dentiste doit etre passe par le plateau pour le "prendre" */
 /* Ici on verifie juste qu'un plateau sale existe */
 (void)adj;
+if (!d->porte_plateau) {
+        printf("[!] Vous ne portez pas de plateau.\n");
+        return;
+    }
 pat->plateau.nb_pose = 0;
 pat->plateau.sale = 0;
+d->plateau_transporte.sale = 0;
 d->g.porte_gants = 0; /* gants jetes en meme temps */
 d->g.gants_sales = 0;
-printf("[+] Plateau du patient %d nettoyé, gants jetés.\n", i + 1);
+printf("[+] Plateau du patient %d vidé, gants jetés.\n", i + 1);
 trouve = 1;
 break;
 }
@@ -884,23 +901,39 @@ action_prendre_instrument(p);
 return;
 }
 if (c == PLATEAU) {
-int idx_patient;
-if (plateau_a_patient(p, nx, ny, &idx_patient)) {
-Patient* pat = &p->patients[idx_patient];
-/* Si plateau complet et patient present : soigner */
-if (pat->occupe_fauteuil && plateau_complet(pat) &&
-d->mains.i == AUCUN_INSTR &&
-d->g.porte_gants && !d->g.gants_sales) {
-action_soigner(p);
-} else if (pat->occupe_fauteuil) {
-/* Deposer instrument */
-action_deposer_plateau(p);
-} else if (!pat->occupe_fauteuil && pat->plateau.sale) {
-/* Plateau a vider - on redirige vers bio */
-printf("[!] Plateau sale - allez à la poubelle biologique (B) pour le vider.\n");
-}
-}
-return;
+    int idx_patient;
+    if (plateau_a_patient(p, nx, ny, &idx_patient)) {
+        /* Patient présent */
+        Patient* pat = &p->patients[idx_patient];
+        if (pat->occupe_fauteuil && plateau_complet(pat) &&
+            d->mains.i == AUCUN_INSTR &&
+            d->g.porte_gants && !d->g.gants_sales) {
+            action_soigner(p);
+            return;
+        } else if (pat->occupe_fauteuil) {
+            action_deposer_plateau(p);
+            return;
+        }
+    }
+    /* Patient absent : tenter de prendre le plateau sale */
+    int idx;
+    if (plateau_a_patient_ou_libre(p, nx, ny, &idx)) {
+        Patient* pat = &p->patients[idx];
+        if (pat->plateau.sale || pat->plateau.nb_pose > 0) {
+            if (d->porte_plateau) {
+                printf("[!] Vous portez déjà un plateau.\n");
+            } else {
+                d->porte_plateau = 1;
+                d->plateau_transporte = pat->plateau;
+                pat->plateau.nb_pose = 0;
+                pat->plateau.sale = 0;
+                printf("[+] Plateau récupéré, apportez-le à la poubelle biologique.\n");
+            }
+        } else {
+            printf("[!] Aucun plateau sale ici.\n");
+        }
+    }
+    return;
 }
 }
 printf("[!] Aucune action possible ici.\n");

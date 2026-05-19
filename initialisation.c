@@ -1,3 +1,4 @@
+#include"structures_projet_dentiste.h"
 /* ===================== INITIALISATION ===================== */
 
 void init_grille(Partie* p) {

@@ -1,3 +1,4 @@
+#include"structures_projet_dentiste.h"
 /* ===================== MENU PRINCIPAL ===================== */
 
 void afficher_menu_principal() {

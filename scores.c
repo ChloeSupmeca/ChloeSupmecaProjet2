@@ -1,3 +1,4 @@
+#include"structures_projet_dentiste.h"
 /* ===================== SCORES ===================== */
 
 void enregistrer_score(Partie* p) {

@@ -77,12 +77,6 @@ typedef struct {
 } Position;
 
 typedef struct {
-  Position p;
-  Gants g;
-  Etat_Instrument mains;
-} Dentiste;
-
-typedef struct {
   int nb_instruments;
   Instrument instruments[3];
   int prix;
@@ -94,6 +88,18 @@ typedef struct {
   int nb_pose;
   int sale; /* 1 si plateau souille (apres soins) */
 } Plateau_Patient;
+
+typedef struct {
+    Position p;
+    Gants g;
+    Etat_Instrument mains;
+
+    int porte_plateau;
+    Plateau_Patient plateau_transporte;
+    p->dentiste.porte_plateau = 0;
+
+} Dentiste;
+
 
 typedef struct {
   int occupe_fauteuil;

@@ -52,6 +52,13 @@ typedef enum {
   FURIEUX
 } Humeur;
 
+typedef enum {
+    PLATEAU_PROPRE,
+    PLATEAU_SALE,
+    PLATEAU_ABSENT
+} EtatPlateau;
+
+
 /* ===================== STRUCTURES ===================== */
 
 typedef struct {

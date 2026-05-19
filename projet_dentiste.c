@@ -52,6 +52,13 @@ MECONTENT,
 FURIEUX
 } Humeur;
 
+typedef enum {
+    PLATEAU_PROPRE,
+    PLATEAU_SALE,
+    PLATEAU_ABSENT
+} EtatPlateau;
+
+
 /* ===================== STRUCTURES ===================== */
 
 typedef struct {
@@ -117,6 +124,7 @@ int partie_terminee;
 int score_final;
 time_t debut_partie;
 } Partie;
+
 
 /* ===================== DONNEES STATIQUES ===================== */
 

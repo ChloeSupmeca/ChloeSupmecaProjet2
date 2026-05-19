@@ -566,7 +566,7 @@ p->patients_satisfaits, p->patients_mecontents, p->patients_furieux);
 
 /* Commandes */
 printf("─────────────────────────────────────────────\n");
-printf("Déplacements: 5=gauche 2=bas 1=haut 3=droite | e=action | s=sauvegarder | x=quitter\n");
+printf("Déplacements: 1=gauche 2=bas 5=haut 3=droite | e=action | s=sauvegarder | x=quitter\n");
 printf("─────────────────────────────────────────────\n");
 }
 
@@ -1003,9 +1003,9 @@ cmd = 0;
 if (scanf(" %c", &cmd) != 1) continue;
 
 switch(cmd) {
-case '5': deplacer(p, -1, 0); break; /* gauche */
+case '1': deplacer(p, -1, 0); break; /* gauche */
 case '3': deplacer(p, 1, 0); break; /* droite */
-case '1': deplacer(p, 0, -1); break; /* haut */
+case '5': deplacer(p, 0, -1); break; /* haut */
 case '2': deplacer(p, 0, 1); break; /* bas */
 case 'e': case 'E': action_e(p); break;
 case 's': case 'S': sauvegarder(p); break;

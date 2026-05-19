@@ -3,27 +3,29 @@
 CavitY-Taskforce est un jeu vidéo qui consiste à guérir des patients ayant des pathologies.
 Vous incarnez le dentiste.
 
+Pour compiler et exécuter : 
+
 Pour vous déplacer :
 
-A gauche : Appuyer sur 5 puis appuyer sur entrée.
+A gauche : Appuyer sur 1 puis appuyer sur entrée.
 
 A droite : Appuyer sur 3 puis appuyer sur entrée.
 
-En haut : Appuyer sur 1 puis appuyer sur entrée.
+En haut : Appuyer sur 5 puis appuyer sur entrée.
 
 En bas : Appuyer sur 2 puis appuyer sur entrée.
 
 Pour prendre des gants :
 
-S'approcher de la boîte à gants et appuyer sur E
+S'approcher de la boîte à gants et appuyer sur e
 
 Pour jetter les gants ou instruments :
 
-S'approcher de la poubelle et appuyer sur E puis appuyer sur entrée.
+S'approcher de la poubelle et appuyer sur e puis appuyer sur entrée.
 
 Pour soigner :
 
-S'approcher du patient et appuyer sur E puis appuyer sur entrée
+S'approcher du patient et appuyer sur e puis appuyer sur entrée
 
 Pour prendre un instrument :
 

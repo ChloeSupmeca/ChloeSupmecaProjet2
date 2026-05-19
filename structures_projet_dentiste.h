@@ -55,7 +55,7 @@ typedef enum {
 /* ===================== STRUCTURES ===================== */
 
 typedef struct {
-  Instrument i;
+Instrument i;
   int salete; /* 0=propre, 1=souillee */
 } Etat_Instrument;
 
@@ -106,6 +106,8 @@ typedef struct {
   Case grille[LONGUEUR][HAUTEUR];
   Patient patients[N_FAUTEUILS];
   Dentiste dentiste;
+  int couts[NB_INSTRUMENTS];
+  Pathologie pathologies_data[NB_PATHOLOGIES];
   int argent;
   int tours;
   int patients_satisfaits;

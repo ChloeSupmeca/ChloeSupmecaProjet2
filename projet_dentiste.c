@@ -96,7 +96,6 @@ typedef struct {
 
     int porte_plateau;
     Plateau_Patient plateau_transporte;
-    p->dentiste.porte_plateau = 0;
 
 } Dentiste;
 
@@ -1083,11 +1082,8 @@ printf("[!] Echec du chargement, nouvelle partie.\n");
 } else {
 printf("[+] Partie chargée !\n");
 }
+} 
 } else {
-nouvelle_partie(&p);
-}
-} else {
-nouvelle_partie(&p);
 /* Faire arriver un premier patient immédiatement */
 faire_arriver_patient(&p);
 }

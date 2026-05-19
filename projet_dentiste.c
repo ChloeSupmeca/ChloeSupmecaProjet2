@@ -2045,6 +2045,7 @@ int main(void) {
 srand((unsigned)time(NULL));
 Partie p;
 memset(&p, 0, sizeof(Partie));
+ nouvelle_partie(&p);
 charger_couts(&p);
 charger_pathologies(&p);
 int choix = 1;
@@ -2055,7 +2056,7 @@ if (choix == 3) return 0;
 if (choix == 2) {
 if (!charger_sauvegarde(&p)) {
 printf("[!] Echec du chargement, nouvelle partie.\n");
-nouvelle_partie(&p);
+
 } else {
 printf("[+] Partie chargée !\n");
 }

@@ -29,11 +29,11 @@ if (tous_pleins) {
 printf("\n=== FIN DE PARTIE : Cabinet plein et patient furieux ! ===\n");
 p->partie_terminee = 1;
 p->score_final = p->argent;
+p->fin_naturelle = 1;
 }
 }
 }
 }
-
 
 Instrument instrument_depuis_nom(char* nom) {
     if (strcmp(nom, "PINCE") == 0) return PINCE;

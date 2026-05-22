@@ -128,5 +128,6 @@ typedef struct {
   int patients_furieux;
   int partie_terminee;
   int score_final;
+  int fin_naturelle;
   time_t debut_partie;
 } Partie;

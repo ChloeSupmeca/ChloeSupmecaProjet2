@@ -5,6 +5,10 @@ Vous incarnez le dentiste.
 
 Pour compiler et exécuter : 
 
+Vos patients ont des pathologies qui necéssitent un ou deux outils maximum pour être traitées. Vous devez mettre des gants puis déposer sur le plateau du patient les outils nécessaires. Ensuite, vous le soignerez et vous viderez son plateau dans la poubelle biologique avant de le redéposer. Assurez vous également d'avoir jeté vos gants dans la poubelle biologique et d'en porter des propres avant de soigner votre prochain patient. Vous ne pouvez pas jeter vos gants si vous avez un plateau dans les mains. La jauge de patience des patients est représentée à côté des pathologies des patients comme ceci : [########..] 21. 
+
+Commandes : 
+
 Pour vous déplacer :
 
 A gauche : Appuyer sur 1 puis appuyer sur entrée.
@@ -15,30 +19,23 @@ En haut : Appuyer sur 5 puis appuyer sur entrée.
 
 En bas : Appuyer sur 2 puis appuyer sur entrée.
 
-Pour prendre des gants :
+Vous pouvez saisir plusieurs commandes à la suite puis entrer mais le nombre de tours joués sera le même qu'en saisissant les commandes une à une.
 
-S'approcher de la boîte à gants et appuyer sur e
+Pour faire une action, se positionner à côté de la case concernée par l'action puis appuyer sur e :
 
-Pour jetter les gants ou instruments :
+-prendre des gants :  case G
+-jeter quelque chose (R ou B)
+-soigner : T 
+-prendre un instrument : I (puis le numéro de l'instrument)
 
-S'approcher de la poubelle et appuyer sur e puis appuyer sur entrée.
-
-Pour soigner :
-
-S'approcher du patient et appuyer sur e puis appuyer sur entrée
-
-Pour prendre un instrument :
-
-S'approcher de l'instrument et appuyer sur E puis appuyer sur entrée. Ensuite appuyer sur un chiffre de 1 à 7 pour prendre un objet puis appuyer sur entrée.
 
 Pour sauvegarder :
 
 Appuyer sur S puis appuyer sur entrée.
 
-Pour sauvegarder et quitter :
+Pour quitter :
 
-Appuyer sur X puis appuyer sur entrée.
-
+Appuyer sur X puis appuyer sur entrée, puis o ou n pour sauvegarder ou non. 
 
 
 

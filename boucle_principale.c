@@ -15,8 +15,9 @@ affichage(p);
 printf("\nAction > ");
 fflush(stdout);
 cmd = 0;
-if (scanf(" %c", &cmd) != 1) continue;
-
+if (scanf(" %c", &cmd) != 1){
+    continue;
+}
 switch(cmd) {
 case '1': deplacer(p, -1, 0); break; /* gauche */
 case '3': deplacer(p, 1, 0); break; /* droite */
@@ -34,6 +35,7 @@ if (scanf(" %c", &rep) != 1) {
 if (rep == 'o' || rep == 'O') sauvegarder(p);
 p->partie_terminee = 1;
 p->score_final = p->argent;
+p->fin_naturelle = 0;
 break;
 default:
 printf("[!] Commande inconnue.\n");
@@ -57,5 +59,8 @@ printf("Furieux : %d\n", p->patients_furieux);
 enregistrer_score(p);
 
 /* Supprimer sauvegarde si partie terminee normalement */
-remove(SAVE_FILE);
+if (p->fin_naturelle) {
+    remove(SAVE_FILE);
 }
+}
+

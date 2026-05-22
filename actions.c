@@ -27,7 +27,7 @@ void action_prendre_gants(Partie* p) {
             }
             d->g.porte_gants = 1;
             d->g.gants_sales  = 0;
-            p->argent -= p->couts[0]; /* index 0 réservé; coût gants = 1 hardcodé */
+             /* index 0 réservé; coût gants = 1 hardcodé */
             p->argent -= 1;           /* coût fixe des gants */
             /* Correction : on retire le coût une seule fois */
             p->argent += p->couts[0]; /* annule la ligne précédente si couts[0]==0 */

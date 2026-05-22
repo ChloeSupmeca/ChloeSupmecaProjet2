@@ -127,6 +127,7 @@ typedef struct {
   int patients_furieux;
   int partie_terminee;
   int score_final;
+  int fin_naturelle;
   time_t debut_partie;
 } Partie;
 
@@ -376,6 +377,7 @@ if (tous_pleins) {
 printf("\n=== FIN DE PARTIE : Cabinet plein et patient furieux ! ===\n");
 p->partie_terminee = 1;
 p->score_final = p->argent;
+p->fin_naturelle = 1;
 }
 }
 }
@@ -1062,6 +1064,7 @@ if (scanf(" %c", &rep) != 1) {
 if (rep == 'o' || rep == 'O') sauvegarder(p);
 p->partie_terminee = 1;
 p->score_final = p->argent;
+p->fin_naturelle = 0;
 break;
 default:
 printf("[!] Commande inconnue.\n");
@@ -1085,7 +1088,9 @@ printf("Furieux : %d\n", p->patients_furieux);
 enregistrer_score(p);
 
 /* Supprimer sauvegarde si partie terminee normalement */
-remove(SAVE_FILE);
+if (p->fin_naturelle) {
+    remove(SAVE_FILE);
+}
 }
 
 /* ===================== MAIN ===================== */
@@ -1097,10 +1102,10 @@ memset(&p, 0, sizeof(Partie));
  nouvelle_partie(&p);
 charger_couts(&p);
 charger_pathologies(&p);
-int choix = 1;
+
 if (fichier_sauvegarde_existe()) {
 afficher_menu_principal();
-
+int choix = 1;
 if (scanf("%d", &choix) != 1) {
     fprintf(stderr, "[!] Erreur de saisie.\n");
     return 1; 
@@ -1110,11 +1115,21 @@ if (choix == 3) return 0;
 if (choix == 2) {
 if (!charger_sauvegarde(&p)) {
 printf("[!] Echec du chargement, nouvelle partie.\n");
+faire_arriver_patient(&p);
 } else {
+    charger_couts(&p);
+                charger_pathologies(&p);
+                
 printf("[+] Partie chargée !\n");
-}
 } 
-} else {
+} 
+else {
+            /* Nouvelle partie : supprimer l'ancienne sauvegarde */
+            remove(SAVE_FILE);
+            faire_arriver_patient(&p);
+        }
+    } 
+else {
 /* Faire arriver un premier patient immédiatement */
 faire_arriver_patient(&p);
 }

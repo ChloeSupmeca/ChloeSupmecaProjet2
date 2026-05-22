@@ -567,6 +567,13 @@ manque++;
 }
 if (!manque) printf("[COMPLET]");
 }
+printf(" | Plateau fauteuil: ");
+if (p->patients[idx].plateau.sale)
+    printf("sale");
+else if (p->patients[idx].plateau.nb_pose > 0)
+    printf("propre");
+else
+    printf("vide");
 }
 printf("\n");
 }
@@ -579,7 +586,8 @@ noms_instruments[p->dentiste.mains.i],
 p->dentiste.mains.salete ? " (SOUILLE)" : "",
 p->dentiste.g.porte_gants ? "OUI" : "NON",
 p->dentiste.g.gants_sales ? " (SALES)" : "",
-p->dentiste.porte_plateau ? "PORTE" : "non");
+p->dentiste.porte_plateau ? (p->dentiste.plateau_transporte.sale ? "PORTE (sale)" : "PORTE (propre)")
+    : "non");
 
 /* Stats */
 printf("─────────────────────────────────────────────\n");
@@ -800,40 +808,18 @@ int ny = d->p.y + dy[dir];
 if (nx < 0 || nx >= LONGUEUR || ny < 0 || ny >= HAUTEUR) continue;
 
 if (p->grille[nx][ny] == BIOLOGIQUE) {
-/* Le dentiste doit porter quelque chose de sale (le plateau implicitement) */
-/* On cherche un plateau sale parmi les patients traites */
-int trouve = 0;
-for (int i = 0; i < N_FAUTEUILS; i++) {
-Patient* pat = &p->patients[i];
-if (!pat->occupe_fauteuil && pat->plateau.sale && pat->plateau.nb_pose > 0) {
-/* Verifie que le dentiste est a cote du plateau */
-int px = 6, py = 4 + i;
-int adj = (abs(d->p.x - px) + abs(d->p.y - py) == 1) ||
-(d->p.x == px && d->p.y == py);
-/* On simplifie: si a cote de la bio on peut vider n'importe quel plateau qu'on "porte" */
-/* Selon l'enonce on prend le plateau et jette son contenu dans la bio */
-/* On simplifie: le dentiste doit etre passe par le plateau pour le "prendre" */
-/* Ici on verifie juste qu'un plateau sale existe */
-(void)adj;
-if (!d->porte_plateau) {
-        printf("[!] Vous ne portez pas de plateau.\n");
-        return;
+            if (!d->porte_plateau) {
+                printf("[!] Vous ne portez pas de plateau.\n");
+                return;
+            }
+            /* Vider le plateau transporté */
+            d->plateau_transporte.nb_pose = 0;
+            d->plateau_transporte.sale = 0;
+            printf("[+] Plateau vidé dans la poubelle biologique.\n");
+            return;
+        }
     }
-pat->plateau.nb_pose = 0;
-pat->plateau.sale = 0;
-d->plateau_transporte.sale = 0;
-d->g.porte_gants = 0; /* gants jetes en meme temps */
-d->g.gants_sales = 0;
-printf("[+] Plateau du patient %d vidé, gants jetés.\n", i + 1);
-trouve = 1;
-break;
-}
-}
-if (!trouve) printf("[!] Aucun plateau sale à vider.\n");
-return;
-}
-}
-printf("[!] Pas de poubelle biologique à portée.\n");
+    printf("[!] Pas de poubelle biologique à portée.\n");
 }
 
 /* Jeter un instrument dans le recyclage */
@@ -886,14 +872,13 @@ action_jeter_recyclage(p);
 return;
 }
 if (c == BIOLOGIQUE) {
-
-    /* Priorité : jeter les gants si le joueur en porte */
-    if (d->g.porte_gants) {
+    if (d->porte_plateau) {
+        action_vider_plateau_biologique(p);
+    } else if (d->g.porte_gants) {
         action_jeter_gants(p);
     } else {
-        action_vider_plateau_biologique(p);
+        printf("[!] Rien à jeter dans la poubelle biologique.\n");
     }
-
     return;
 }
 if (c == INSTRUMENTS) {
@@ -902,8 +887,19 @@ return;
 }
 if (c == PLATEAU) {
     int idx_patient;
+
+    /* Reposer un plateau propre qu'on transporte */
+    if (d->porte_plateau && !d->plateau_transporte.sale) {
+        int idx;
+        if (plateau_a_patient_ou_libre(p, nx, ny, &idx)) {
+            p->patients[idx].plateau = d->plateau_transporte;
+            d->porte_plateau = 0;
+            printf("[+] Plateau remis en place.\n");
+            return;
+        }
+    }
+
     if (plateau_a_patient(p, nx, ny, &idx_patient)) {
-        /* Patient présent */
         Patient* pat = &p->patients[idx_patient];
         if (pat->occupe_fauteuil && plateau_complet(pat) &&
             d->mains.i == AUCUN_INSTR &&
@@ -915,7 +911,8 @@ if (c == PLATEAU) {
             return;
         }
     }
-    /* Patient absent : tenter de prendre le plateau sale */
+
+    /* Patient absent : prendre le plateau sale */
     int idx;
     if (plateau_a_patient_ou_libre(p, nx, ny, &idx)) {
         Patient* pat = &p->patients[idx];
@@ -927,10 +924,11 @@ if (c == PLATEAU) {
                 d->plateau_transporte = pat->plateau;
                 pat->plateau.nb_pose = 0;
                 pat->plateau.sale = 0;
-                printf("[+] Plateau récupéré, apportez-le à la poubelle biologique.\n");
+                printf("[+] Plateau récupéré (%s).\n",
+                    d->plateau_transporte.sale ? "sale" : "propre");
             }
         } else {
-            printf("[!] Aucun plateau sale ici.\n");
+            printf("[!] Aucun plateau à prendre ici.\n");
         }
     }
     return;

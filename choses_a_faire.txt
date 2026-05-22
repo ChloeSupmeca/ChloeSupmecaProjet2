@@ -1,8 +1,7 @@
 
-choses a rajouter :
-separer fichiers 
-makefile
+
+
 commenter le code par bloc au dessus parce que a coté c galere
-completer le readme (instructions pour executer et compiler
-supprimer les fichiers inutiles (garder les fichiers txt et sauvegarde.dat)
-ne pas trop descendre le terminal
+tester tous les points
+
+

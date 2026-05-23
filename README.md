@@ -7,9 +7,10 @@ Pour supprimer les .o et l'exécutable : -make clean
 
 Structure du projet : 
 
-utils.h/c : Fonctions utilitaires et affichage 
-partie.h/c : Init, chargement fichiers, patients, sauvegarde, scores 
-actions.h/c : Actions du dentiste (prendre, déposer, soigner…) 
+types.h : strcutures et énumérations
+utils.h/c : Fonctions utilitaire et affichage 
+partie.h/c : Init, chargements des fichiers, patients, sauvegarde, scores 
+actions.h/c : Actions du dentiste 
 jeu.h/c : Boucle principale et menu 
 main.c : point d'entrée 
 pathologies.txt : Données des pathologies (instruments  prix) 

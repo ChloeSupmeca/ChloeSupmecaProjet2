@@ -1,7 +1,7 @@
 /* toutes les interactions du dentistes avec son environnement : 
 - On parcourt les 4 cases adjacentes (DX/DY) à la recherche d'une case cible.
-- On vérifie les préconditions : si elles ne sont pas remplies, on affiche un message et on return sans modifier l'état.
-- On ne modifie l'état que si toutes les conditions sont validées.*/
+- On verifie les preconditions : si elles ne sont pas remplies, on affiche un message et on return sans modifier l'etat.
+- On ne modifie l'etat que si toutes les conditions sont validees.*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,7 +15,6 @@ static const int DX[4] = {-1, 1, 0, 0};
 static const int DY[4] = { 0, 0,-1, 1};
 
 
-
 void action_prendre_gants(Partie* p) {
     if (p == NULL) return;
     Dentiste* d = &p->dentiste;
@@ -27,22 +26,17 @@ void action_prendre_gants(Partie* p) {
 
         if (p->grille[nx][ny] == GANTS_CASE) {
             if (d->g.porte_gants) {
-                printf("[!] Vous portez déjà des gants !\n");
+                printf(" Vous portez deja des gants !\n");
                 return;
             }
             d->g.porte_gants = 1;
             d->g.gants_sales  = 0;
-             /* index 0 réservé; coût gants = 1 hardcodé */
-            p->argent -= 1;           /* coût fixe des gants */
-            /* Correction : on retire le coût une seule fois */
-            
-            /* Simplification finale : coût gants = 1€ */
-            /* (les deux lignes d'avant s'annulent si couts[0]=0, net = -1) */
-            printf("[+] Gants enfilés !\n");
+            p->argent -= 1;
+            printf("[+] Gants enfiles !\n");
             return;
         }
     }
-    printf("[!] Pas de gants à portée.\n");
+    printf("[!] Pas de gants a portee.\n");
 }
 
 void action_jeter_gants(Partie* p) {
@@ -61,14 +55,14 @@ void action_jeter_gants(Partie* p) {
             }
             d->g.porte_gants = 0;
             d->g.gants_sales  = 0;
-            printf("[+] Gants jetés dans la poubelle biologique.\n");
+            printf("[+] Gants jetes dans la poubelle biologique.\n");
             return;
         }
     }
-    printf("[!] Pas de poubelle biologique à portée.\n");
+    printf("[!] Pas de poubelle biologique a portee.\n");
 }
 
-/* ==================== INSTRUMENTS ==================== */
+
 
 void action_prendre_instrument(Partie* p) {
     if (p == NULL) return;
@@ -81,7 +75,7 @@ void action_prendre_instrument(Partie* p) {
 
         if (p->grille[nx][ny] == INSTRUMENTS) {
             if (d->mains.i != AUCUN_INSTR) {
-                printf("[!] Vous portez déjà un objet !\n");
+                printf("[!] Vous portez deja un objet !\n");
                 return;
             }
             printf("Quel instrument prendre ?\n");
@@ -102,11 +96,11 @@ void action_prendre_instrument(Partie* p) {
             p->argent      -= p->couts[choix];
             printf("[+] Instrument %s pris%s\n",
                 noms_instruments[choix],
-                d->mains.salete ? " (SOUILLÉ : pas de gants propres)" : "");
+                d->mains.salete ? " (SOUILLE : pas de gants propres)" : "");
             return;
         }
     }
-    printf("[!] Pas d'instruments à portée.\n");
+    printf("[!] Pas d'instruments a portee.\n");
 }
 
 void action_jeter_recyclage(Partie* p) {
@@ -120,19 +114,19 @@ void action_jeter_recyclage(Partie* p) {
 
         if (p->grille[nx][ny] == RECYCLAGE) {
             if (d->mains.i == AUCUN_INSTR) {
-                printf("[!] Vous ne portez rien à recycler.\n");
+                printf("[!] Vous ne portez rien a recycler.\n");
                 return;
             }
-            printf("[+] %s jeté dans le bac de recyclage.\n", noms_instruments[d->mains.i]);
+            printf("[+] %s jete dans le bac de recyclage.\n", noms_instruments[d->mains.i]);
             d->mains.i      = AUCUN_INSTR;
             d->mains.salete = 0;
             return;
         }
     }
-    printf("[!] Pas de bac de recyclage à portée.\n");
+    printf("[!] Pas de bac de recyclage à portee.\n");
 }
 
-/* ==================== PLATEAU ==================== */
+
 
 void action_deposer_plateau(Partie* p) {
     if (p == NULL) return;
@@ -154,7 +148,7 @@ void action_deposer_plateau(Partie* p) {
                 return;
             }
             if (d->mains.salete) {
-                printf("[!] Instrument souillé, impossible sur un plateau stérile !\n");
+                printf("[!] Instrument souille, impossible sur un plateau sterile !\n");
                 return;
             }
             if (!d->g.porte_gants || d->g.gants_sales) {
@@ -162,11 +156,11 @@ void action_deposer_plateau(Partie* p) {
                 return;
             }
             if (!instrument_utile(pat, d->mains.i)) {
-                printf("[!] Cet instrument n'est pas nécessaire pour ce patient !\n");
+                printf("[!] Cet instrument n'est pas necessaire pour ce patient !\n");
                 return;
             }
             if (instrument_deja_pose(pat, d->mains.i)) {
-                printf("[!] Cet instrument est déjà sur le plateau !\n");
+                printf("[!] Cet instrument est deja sur le plateau !\n");
                 return;
             }
             if (pat->plateau.nb_pose >= 3) {
@@ -177,11 +171,11 @@ void action_deposer_plateau(Partie* p) {
             pat->plateau.pose[pat->plateau.nb_pose++] = d->mains.i;
             d->mains.i      = AUCUN_INSTR;
             d->mains.salete = 0;
-            printf("[+] Instrument déposé sur le plateau du patient %d.\n", idx_patient + 1);
+            printf("[+] Instrument depose sur le plateau du patient %d.\n", idx_patient + 1);
             return;
         }
     }
-    printf("[!] Pas de plateau à portée.\n");
+    printf("[!] Pas de plateau à portee.\n");
 }
 
 void action_vider_plateau_biologique(Partie* p) {
@@ -200,16 +194,16 @@ void action_vider_plateau_biologique(Partie* p) {
             }
             d->plateau_transporte.nb_pose = 0;
             d->plateau_transporte.sale    = 0;
-            d->g.porte_gants              = 0; /* gants jetés en même temps */
+            d->g.porte_gants              = 0; 
             d->g.gants_sales              = 0;
-            printf("[+] Plateau vidé dans la poubelle biologique. Gants jetés.\n");
+            printf("[+] Plateau vide dans la poubelle biologique. Gants jetés.\n");
             return;
         }
     }
     printf("[!] Pas de poubelle biologique à portée.\n");
 }
 
-/* ==================== SOIGNER ==================== */
+
 
 void action_soigner(Partie* p) {
     if (p == NULL) return;
@@ -231,7 +225,6 @@ void action_soigner(Partie* p) {
                 return;
             }
             if (!d->g.porte_gants || d->g.gants_sales) {
-                /* Patient prend peur et part furieux */
                 printf("[!!!] Le patient prend peur (gants absents/sales) et part furieux !\n");
                 pat->plateau.sale    = 1;
                 pat->occupe_fauteuil = 0;
@@ -253,7 +246,7 @@ void action_soigner(Partie* p) {
                 return;
             }
 
-            /* Soins effectués */
+            
             int prix = prix_prestation(&pat->patho);
             pat->traite       = 1;
             pat->plateau.sale = 1;
@@ -262,26 +255,25 @@ void action_soigner(Partie* p) {
             if (pat->patience > pat->patience_max / 2) {
                 if (!pat->gratuit) p->argent += prix;
                 p->patients_satisfaits++;
-                printf("[✓] Patient %d soigné ! Paiement : %d€\n",
+                printf(" Patient %d soigne ! Paiement : %d€\n",
                     idx_patient + 1, pat->gratuit ? 0 : prix);
             } else if (pat->patience > 0) {
                 if (!pat->gratuit) p->argent += prix / 2;
                 p->patients_mecontents++;
-                printf("[~] Patient %d mécontent. Paiement : %d€\n",
+                printf(" Patient %d mecontent. Paiement : %d€\n",
                     idx_patient + 1, pat->gratuit ? 0 : prix / 2);
             } else {
                 p->patients_mecontents++;
-                printf("[~] Patient %d trop attendu. Paiement : 0€\n", idx_patient + 1);
+                printf(" Patient %d trop attendu. Paiement : 0€\n", idx_patient + 1);
             }
 
             pat->occupe_fauteuil = 0;
             return;
         }
     }
-    printf("[!] Pas de patient à soigner à portée.\n");
+    printf("[!] Pas de patient a soigner à portee.\n");
 }
 
-/* ==================== DISPATCHER ==================== */
 
 void action_e(Partie* p) {
     if (p == NULL) return;
@@ -308,7 +300,7 @@ void action_e(Partie* p) {
             } else if (d->g.porte_gants) {
                 action_jeter_gants(p);
             } else {
-                printf("[!] Rien à jeter dans la poubelle biologique.\n");
+                printf("[!] Rien a jeter dans la poubelle biologique.\n");
             }
             return;
         }
@@ -319,7 +311,7 @@ void action_e(Partie* p) {
         if (c == PLATEAU) {
             int idx_patient;
 
-            /* 1) Reposer un plateau propre transporté */
+            
             if (d->porte_plateau && !d->plateau_transporte.sale) {
                 int idx;
                 if (plateau_a_patient_ou_libre(p, nx, ny, &idx)) {
@@ -330,7 +322,7 @@ void action_e(Partie* p) {
                 }
             }
 
-            /* 2) Patient présent : soigner ou déposer */
+            
             if (plateau_a_patient(p, nx, ny, &idx_patient)) {
                 Patient* pat = &p->patients[idx_patient];
                 if (pat->occupe_fauteuil && plateau_complet(pat) &&
@@ -344,23 +336,23 @@ void action_e(Partie* p) {
                 }
             }
 
-            /* 3) Pas de patient : ramasser le plateau sale */
+            
             int idx;
             if (plateau_a_patient_ou_libre(p, nx, ny, &idx)) {
                 Patient* pat = &p->patients[idx];
                 if (pat->plateau.sale || pat->plateau.nb_pose > 0) {
                     if (d->porte_plateau) {
-                        printf("[!] Vous portez déjà un plateau.\n");
+                        printf("[!] Vous portez deja un plateau.\n");
                     } else {
                         d->porte_plateau      = 1;
                         d->plateau_transporte = pat->plateau;
                         pat->plateau.nb_pose  = 0;
                         pat->plateau.sale     = 0;
-                        printf("[+] Plateau récupéré (%s).\n",
+                        printf("[+] Plateau recupere (%s).\n",
                             d->plateau_transporte.sale ? "sale" : "propre");
                     }
                 } else {
-                    printf("[!] Aucun plateau à prendre ici.\n");
+                    printf("[!] Aucun plateau a prendre ici.\n");
                 }
             }
             return;
@@ -369,7 +361,7 @@ void action_e(Partie* p) {
     printf("[!] Aucune action possible ici.\n");
 }
 
-/* ==================== DEPLACEMENT ==================== */
+
 
 void deplacer(Partie* p, int dx, int dy) {
     if (p == NULL) return;

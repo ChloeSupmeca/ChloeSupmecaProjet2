@@ -6,7 +6,6 @@
 #include "utils.h"
 #include "partie.h"
 
-/* ===================== INITIALISATION ===================== */
 
 void init_grille(Partie* p) {
     if (p == NULL) return;
@@ -15,19 +14,19 @@ void init_grille(Partie* p) {
         for (int y = 0; y < HAUTEUR; y++)
             p->grille[x][y] = SOL;
 
-    /* Fauteuils */
+    
     p->grille[7][4] = FAUTEUIL;
     p->grille[7][5] = FAUTEUIL;
     p->grille[7][6] = FAUTEUIL;
     p->grille[7][7] = FAUTEUIL;
 
-    /* Plateaux (adjacents aux fauteuils) */
+    
     p->grille[6][4] = PLATEAU;
     p->grille[6][5] = PLATEAU;
     p->grille[6][6] = PLATEAU;
     p->grille[6][7] = PLATEAU;
 
-    /* Instruments */
+    
     p->grille[0][2] = INSTRUMENTS;
     p->grille[0][3] = INSTRUMENTS;
     p->grille[0][4] = INSTRUMENTS;
@@ -37,14 +36,14 @@ void init_grille(Partie* p) {
     p->grille[3][0] = INSTRUMENTS;
     p->grille[4][0] = INSTRUMENTS;
 
-    /* Poubelles */
+    
     p->grille[3][8] = RECYCLAGE;
     p->grille[4][8] = BIOLOGIQUE;
 
-    /* Gants */
+    
     p->grille[5][0] = GANTS_CASE;
 
-    /* Murs */
+    
     p->grille[0][0] = MUR;  p->grille[1][0] = MUR;
     p->grille[6][0] = MUR;  p->grille[7][0] = MUR;
     p->grille[0][1] = MUR;
@@ -70,7 +69,7 @@ void nouvelle_partie(Partie* p) {
     }
 }
 
-/* ===================== CHARGEMENT FICHIERS ===================== */
+
 
 Instrument instrument_depuis_nom(char* nom) {
     if (strcmp(nom, "PINCE")       == 0) return PINCE;
@@ -109,12 +108,12 @@ void charger_pathologies(Partie* p) {
     int idx = 0;
     while (fgets(ligne, sizeof(ligne), f) && idx < NB_PATHOLOGIES) {
         char* token = strtok(ligne, " \n");
-        if (!token) continue;           /* nom de la pathologie, on l'ignore */
+        if (!token) continue;       
         int nb_instr = 0;
         while (1) {
             token = strtok(NULL, " \n");
             if (!token) break;
-            /* Nombre => prix */
+            
             if (token[0] >= '0' && token[0] <= '9') {
                 p->pathologies_data[idx].prix = atoi(token);
                 break;
@@ -130,12 +129,12 @@ void charger_pathologies(Partie* p) {
     fclose(f);
 }
 
-/* ===================== PATIENTS ===================== */
+
 
 void faire_arriver_patient(Partie* p) {
     if (p == NULL) return;
 
-    /* Chercher un fauteuil libre */
+    
     int idx = -1;
     for (int i = 0; i < N_FAUTEUILS; i++) {
         if (!p->patients[i].occupe_fauteuil) { idx = i; break; }
@@ -156,13 +155,13 @@ void faire_arriver_patient(Partie* p) {
     pat->plateau_pose    = 1;
     pat->gratuit         = 0;
 
-    /* Si le plateau du fauteuil est encore sale, le patient ne paiera pas */
+    
     if (p->patients[idx].plateau.sale || p->patients[idx].plateau.nb_pose > 0) {
         pat->gratuit = 1;
         printf("[!] Le plateau n'est pas propre : le patient ne paiera pas !\n");
     }
 
-    printf("\n[!] Patient arrivé fauteuil %d ! Pathologie : %s\n",
+    printf("\n[!] Patient arrive fauteuil %d ! Pathologie : %s\n",
            idx + 1, noms_pathologies[pat->type_patho]);
     printf("    Instruments nécessaires : ");
     for (int i = 0; i < pat->patho.nb_instruments; i++) {
@@ -185,7 +184,7 @@ void gerer_arrivees(Partie* p) {
 void gerer_patience(Partie* p) {
     if (p == NULL) return;
 
-    /* On évalue « tous pleins » AVANT de faire partir quiconque */
+    
     int tous_pleins = 1;
     for (int i = 0; i < N_FAUTEUILS; i++) {
         if (!p->patients[i].occupe_fauteuil) { tous_pleins = 0; break; }
@@ -204,7 +203,7 @@ void gerer_patience(Partie* p) {
             pat->occupe_fauteuil = 0;
             p->patients_furieux++;
 
-            /* Condition de fin de partie */
+            
             if (tous_pleins) {
                 printf("\n=== FIN DE PARTIE : Cabinet plein et patient furieux ! ===\n");
                 p->partie_terminee = 1;
@@ -215,7 +214,7 @@ void gerer_patience(Partie* p) {
     }
 }
 
-/* ===================== SAUVEGARDE ===================== */
+
 
 void sauvegarder(Partie* p) {
     if (p == NULL) return;
@@ -225,10 +224,10 @@ void sauvegarder(Partie* p) {
         return;
     }
     if (fwrite(p, sizeof(Partie), 1, f) != 1) {
-        fprintf(stderr, "[!] Erreur écriture sauvegarde.\n");
+        fprintf(stderr, "[!] Erreur ecriture sauvegarde.\n");
     }
     fclose(f);
-    printf("[+] Partie sauvegardée.\n");
+    printf("[+] Partie sauvegardee.\n");
 }
 
 int charger_sauvegarde(Partie* p) {
@@ -250,7 +249,7 @@ int fichier_sauvegarde_existe(void) {
     return 0;
 }
 
-/* ===================== SCORES ===================== */
+
 
 void enregistrer_score(Partie* p) {
     if (p == NULL) return;
@@ -264,5 +263,5 @@ void enregistrer_score(Partie* p) {
         p->score_final, duree, p->tours,
         p->patients_satisfaits, p->patients_mecontents, p->patients_furieux);
     fclose(f);
-    printf("\n[+] Score enregistré dans %s\n", SCORES_FILE);
+    printf("\n[+] Score enregistre dans %s\n", SCORES_FILE);
 }

@@ -1,3 +1,8 @@
+/* toutes les interactions du dentistes avec son environnement : 
+- On parcourt les 4 cases adjacentes (DX/DY) à la recherche d'une case cible.
+- On vérifie les préconditions : si elles ne sont pas remplies, on affiche un message et on return sans modifier l'état.
+- On ne modifie l'état que si toutes les conditions sont validées.*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "types.h"
@@ -5,11 +10,11 @@
 #include "partie.h"
 #include "actions.h"
 
-/* Tableaux de décalage partagés par toutes les actions */
+
 static const int DX[4] = {-1, 1, 0, 0};
 static const int DY[4] = { 0, 0,-1, 1};
 
-/* ==================== GANTS ==================== */
+
 
 void action_prendre_gants(Partie* p) {
     if (p == NULL) return;

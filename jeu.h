@@ -6,4 +6,4 @@
 void afficher_menu_principal(void);
 void boucle_jeu(Partie* p);
 
-#endif /* JEU_H */
+#endif 

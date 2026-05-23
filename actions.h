@@ -11,10 +11,10 @@ void action_soigner(Partie* p);
 void action_vider_plateau_biologique(Partie* p);
 void action_jeter_recyclage(Partie* p);
 
-/* Dispatcher principal appelé par la touche 'e' */
+
 void action_e(Partie* p);
 
-/* Déplacement */
+
 void deplacer(Partie* p, int dx, int dy);
 
-#endif /* ACTIONS_H */
+#endif 

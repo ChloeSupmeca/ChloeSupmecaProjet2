@@ -12,7 +12,7 @@ void afficher_menu_principal(void) {
     printf("║         CABINET DENTAIRE             ║\n");
     printf("╠══════════════════════════════════════╣\n");
     printf("║  1. Nouvelle partie                  ║\n");
-    printf("║  2. Continuer une partie sauvegardée ║\n");
+    printf("║  2. Continuer une partie sauvegardee ║\n");
     printf("║  3. Quitter                          ║\n");
     printf("╚══════════════════════════════════════╝\n");
     printf("> ");

@@ -27,17 +27,14 @@ int main(void) {
 
         if (choix == 2) {
             if (!charger_sauvegarde(&p)) {
-                printf("[!] Échec du chargement, nouvelle partie.\n");
-                /* Les pathologies/couts ont déjà été chargés */
+                printf("[!] Echec du chargement, nouvelle partie.\n");
                 faire_arriver_patient(&p);
             } else {
-                /* Recharger les fichiers (pointeurs non sauvegardés) */
                 charger_couts(&p);
                 charger_pathologies(&p);
                 printf("[+] Partie chargée !\n");
             }
         } else {
-            /* Nouvelle partie */
             remove(SAVE_FILE);
             faire_arriver_patient(&p);
         }

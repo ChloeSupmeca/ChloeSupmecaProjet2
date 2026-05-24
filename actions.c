@@ -326,8 +326,8 @@ void action_e(Partie* p) {
             if (plateau_a_patient(p, nx, ny, &idx_patient)) {
                 Patient* pat = &p->patients[idx_patient];
                 if (pat->occupe_fauteuil && plateau_complet(pat) &&
-                    d->mains.i == AUCUN_INSTR &&
-                    d->g.porte_gants && !d->g.gants_sales) {
+                    d->mains.i == AUCUN_INSTR ) { /*  &&
+                    d->g.porte_gants && !d->g.gants_sales*/
                     action_soigner(p);
                     return;
                 } else if (pat->occupe_fauteuil) {

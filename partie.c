@@ -163,6 +163,7 @@ void faire_arriver_patient(Partie* p) {
     
     if (plateau_etait_sale || plateau_avait_objets) {
         pat->gratuit = 1;
+        pat->plateau.sale = 1;
         printf("[!] Le plateau n'est pas propre : le patient ne paiera pas !\n");
     }
 

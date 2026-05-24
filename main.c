@@ -1,3 +1,10 @@
+/* Point d'entree du programme : initialise le generateur aleatoire, 
+ charge les donnees depuis les fichiers .txt, 
+ affiche le menu si une sauvegarde existe, 
+ sinon demarre directement, 
+ lance la boucle de jeu. */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -32,7 +39,7 @@ int main(void) {
             } else {
                 charger_couts(&p);
                 charger_pathologies(&p);
-                printf("[+] Partie chargée !\n");
+                printf("[+] Partie chargee !\n");
             }
         } else {
             remove(SAVE_FILE);

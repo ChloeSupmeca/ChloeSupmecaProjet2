@@ -1,3 +1,6 @@
+/* Boucle principale de jeu et menu de demarrage. appels a gerer_arrivees(), affichage(), et aux actions*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "types.h"

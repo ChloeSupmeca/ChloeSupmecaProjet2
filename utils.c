@@ -106,12 +106,15 @@ void afficher_barre_patience(Patient* pat) {
     printf("] %2d", pat->patience);
 }
 
+/*Efface l'ecran puis redessine : la grille, 
+ les informations des patients sur la ligne de leur fauteuil, 
+ l'etat du dentiste, les statistiques globales, le rappel des commandes. */
 void affichage(Partie* p) {
     if (p == NULL) return;
     printf("\033[2J\033[H");
 
     printf("╔══════════════════════════════════════════════════════════════════╗\n");
-    printf("║                      CABINET DENTAIRE                           ║\n");
+    printf("║                      CABINET DENTAIRE                            ║\n");
     printf("╚══════════════════════════════════════════════════════════════════╝\n\n");
 
     printf("D=Dentiste  F=Fauteuil  T=Plateau  I=Instruments  G=Gants\n");
@@ -188,11 +191,11 @@ void affichage(Partie* p) {
             : "non");
 
     printf("─────────────────────────────────────────────\n");
-    printf("Argent: %d€ | Tours: %d | satisfaits: %d | mécontents: %d | furieux: %d\n",
+    printf("Argent: %d€ | Tours: %d | satisfaits: %d | mecontents: %d | furieux: %d\n",
         p->argent, p->tours,
         p->patients_satisfaits, p->patients_mecontents, p->patients_furieux);
 
     printf("─────────────────────────────────────────────\n");
-    printf("Déplacements: 1=gauche  2=bas  5=haut  3=droite | e=action | s=sauvegarder | x=quitter\n");
+    printf("Deplacements: 1=gauche  2=bas  5=haut  3=droite | e=action | s=sauvegarder | x=quitter\n");
     printf("─────────────────────────────────────────────\n");
 }

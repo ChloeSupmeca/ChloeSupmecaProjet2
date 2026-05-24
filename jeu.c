@@ -41,12 +41,9 @@ void boucle_jeu(Partie* p) {
             case '2': deplacer(p,  0,  1); break; /* bas    */
             case 'e': case 'E':
                 action_e(p);
-
                 printf("\nAppuyez sur Entrée pour continuer...");
-    getchar(); /* attend une touche */
-    getchar(); /* vide le buffer */
-
-                
+                getchar(); 
+                getchar(); 
                 break;
             case 's': case 'S':
                 sauvegarder(p);

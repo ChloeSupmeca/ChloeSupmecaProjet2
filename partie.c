@@ -1,3 +1,7 @@
+/* Gestion de l'etat de la partie: initialisation,
+  chargement des fichiers de donnees, arrivee/ patience, 
+  sauvegarde et enregistrement des scores*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -163,7 +167,7 @@ void faire_arriver_patient(Partie* p) {
 
     printf("\n[!] Patient arrive fauteuil %d ! Pathologie : %s\n",
            idx + 1, noms_pathologies[pat->type_patho]);
-    printf("    Instruments nécessaires : ");
+    printf("    Instruments necessaires : ");
     for (int i = 0; i < pat->patho.nb_instruments; i++) {
         printf("%s ", noms_instruments[pat->patho.instruments[i]]);
     }

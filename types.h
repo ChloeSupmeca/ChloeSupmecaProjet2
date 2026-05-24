@@ -1,9 +1,10 @@
+/* Declarations centrales du projet : constantes , enumerations, et structures. 
+ Fichier inclus par tous les autres modules */
+
 #ifndef TYPES_H
 #define TYPES_H
 
 #include <time.h>
-
-/* ===================== CONSTANTES ===================== */
 
 #define LONGUEUR    8
 #define HAUTEUR     9
@@ -13,7 +14,7 @@
 #define PATHO_FILE  "pathologies.txt"
 #define COUTS_FILE  "couts.txt"
 
-/* ===================== ENUMERATIONS ===================== */
+
 
 typedef enum {
     AUCUN_INSTR,
@@ -54,11 +55,11 @@ typedef enum {
     FURIEUX
 } Humeur;
 
-/* ===================== STRUCTURES ===================== */
+
 
 typedef struct {
     Instrument i;
-    int salete; /* 0=propre, 1=souillee */
+    int salete; 
 } Etat_Instrument;
 
 typedef struct {
@@ -80,7 +81,7 @@ typedef struct {
 typedef struct {
     Instrument pose[3];
     int nb_pose;
-    int sale; /* 1 si plateau souille (apres soins) */
+    int sale; 
 } Plateau_Patient;
 
 typedef struct {
@@ -122,9 +123,9 @@ typedef struct {
     time_t debut_partie;
 } Partie;
 
-/* ===================== DONNEES GLOBALES (extern) ===================== */
+
 
 extern const char* noms_instruments[NB_INSTRUMENTS];
 extern const char* noms_pathologies[NB_PATHOLOGIES];
 
-#endif /* TYPES_H */
+#endif 

@@ -142,7 +142,8 @@ void faire_arriver_patient(Partie* p) {
         if (!p->patients[i].occupe_fauteuil) { idx = i; break; }
     }
     if (idx == -1) return;
-
+    int plateau_etait_sale = p->patients[idx].plateau.sale;
+    int plateau_avait_objets = p->patients[idx].plateau.nb_pose > 0;
   
   
     Patient* pat = &p->patients[idx];
@@ -160,7 +161,7 @@ void faire_arriver_patient(Partie* p) {
     pat->gratuit         = 0;
 
     
-    if (p->patients[idx].plateau.sale || p->patients[idx].plateau.nb_pose > 0) {
+    if (plateau_etait_sale || plateau_avait_objets) {
         pat->gratuit = 1;
         printf("[!] Le plateau n'est pas propre : le patient ne paiera pas !\n");
     }

@@ -142,7 +142,13 @@ void faire_arriver_patient(Partie* p) {
         if (!p->patients[i].occupe_fauteuil) { idx = i; break; }
     }
     if (idx == -1) return;
-  
+
+
+  printf("[DEBUG] fauteuil %d : plateau.sale=%d nb_pose=%d\n",
+        idx+1,
+        p->patients[idx].plateau.sale,
+        p->patients[idx].plateau.nb_pose);
+
     int plateau_etait_sale = p->patients[idx].plateau.sale || p->patients[idx].plateau.nb_pose > 0;
   
     Patient* pat = &p->patients[idx];

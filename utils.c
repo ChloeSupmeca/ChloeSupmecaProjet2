@@ -1,8 +1,12 @@
+/* Implementations des fonctions utilitaires et de l'affichage. 
+ Ce module ne modifie jamais l'etat de la partie.
+ */
+
 #include <stdio.h>
 #include "types.h"
 #include "utils.h"
 
-/* ===================== DONNEES GLOBALES ===================== */
+
 
 const char* noms_instruments[NB_INSTRUMENTS] = {
     "AUCUN", "PINCE", "ECARTEURS", "SERINGUE",
@@ -13,7 +17,7 @@ const char* noms_pathologies[NB_PATHOLOGIES] = {
     "Caries", "Aphtes", "Parodontite", "Gingivite", "Abces", "Malocclusion"
 };
 
-/* ===================== UTILITAIRES ===================== */
+
 
 int prix_prestation(Pathologie* patho) {
     return patho->prix;
@@ -93,8 +97,8 @@ int plateau_a_patient_ou_libre(Partie* p, int x, int y, int* idx_patient) {
     return 0;
 }
 
-/* ===================== AFFICHAGE ===================== */
-
+/* affiche une barre de patience de progression [####......] 
+ proportionnelle a la patience restante, suivie du nombre de tours restants */
 void afficher_barre_patience(Patient* pat) {
     int pct = (pat->patience * 10) / (pat->patience_max > 0 ? pat->patience_max : 1);
     printf("[");

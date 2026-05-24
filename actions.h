@@ -1,6 +1,8 @@
 #ifndef ACTIONS_H
 #define ACTIONS_H
 
+/* Toutes les actions realisables par le dentidtse. Chaque action verifie les preconditions avant d'agir, si elles ne sont pas respectees rien ne change */
+
 #include "types.h"
 
 void action_prendre_gants(Partie* p);

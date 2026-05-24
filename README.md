@@ -2,7 +2,7 @@
 
 Pour compiler : make
 
-Pour lancer le jeu : make run
+Pour lancer le jeu : make run ou directement ./cabinet_dentaire
 
 Pour supprimer les .o et l'exécutable : -make clean
 

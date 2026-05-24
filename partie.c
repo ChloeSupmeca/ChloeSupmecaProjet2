@@ -143,13 +143,7 @@ void faire_arriver_patient(Partie* p) {
     }
     if (idx == -1) return;
 
-
-  printf("[DEBUG] fauteuil %d : plateau.sale=%d nb_pose=%d\n",
-        idx+1,
-        p->patients[idx].plateau.sale,
-        p->patients[idx].plateau.nb_pose);
-
-    int plateau_etait_sale = p->patients[idx].plateau.sale || p->patients[idx].plateau.nb_pose > 0;
+  
   
     Patient* pat = &p->patients[idx];
     memset(pat, 0, sizeof(Patient));
@@ -165,14 +159,11 @@ void faire_arriver_patient(Partie* p) {
     pat->plateau_pose    = 1;
     pat->gratuit         = 0;
 
-    if (plateau_etait_sale) {
-        pat->gratuit = 1;
-        printf("[!] Plateau non nettoyé : le patient ne paiera pas !\n");
-    }
-    /*if (p->patients[idx].plateau.sale || p->patients[idx].plateau.nb_pose > 0) {
+    
+    if (p->patients[idx].plateau.sale || p->patients[idx].plateau.nb_pose > 0) {
         pat->gratuit = 1;
         printf("[!] Le plateau n'est pas propre : le patient ne paiera pas !\n");
-    }*/
+    }
 
     printf("\n[!] Patient arrive fauteuil %d ! Pathologie : %s\n",
            idx + 1, noms_pathologies[pat->type_patho]);
